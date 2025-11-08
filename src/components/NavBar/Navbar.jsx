@@ -1,10 +1,19 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
-  const { loginUser, loader } = use(AuthContext);
+  const { loginUser, setLoginUser, loader, logout } = use(AuthContext);
 
+  const handelLogout = () => {
+    logout()
+      .then(() => {
+        setLoginUser(null);
+        toast('User Log Out');
+      })
+      .catch((error) => toast.error(error.message));
+  };
   const navlinks = (
     <>
       <li>
@@ -81,7 +90,12 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link className="bg-rose-600 text-white">Log out</Link>
+                <button
+                  onClick={handelLogout}
+                  className="bg-rose-600 text-white"
+                >
+                  Log out
+                </button>
               </li>
             </ul>
           </div>

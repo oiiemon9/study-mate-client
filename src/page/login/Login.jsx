@@ -1,10 +1,12 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
   const { googleLogin, loginUser, setLoginUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handelGoogleLogin = async () => {
     try {
@@ -12,6 +14,7 @@ const Login = () => {
       const user = result.user;
       setLoginUser(user);
       toast.success('User Login Successful');
+      navigate(location.state || '/');
     } catch (error) {
       toast.error(error.message);
     }
@@ -24,7 +27,11 @@ const Login = () => {
           <h1 className="block text-2xl font-bold text-gray-800">Log in</h1>
           <p className="mt-2 text-sm text-gray-600">
             Don't have an account yet?{' '}
-            <Link to="/register" className="text-green-600 hover:underline">
+            <Link
+              to="/register"
+              state={location.state}
+              className="text-green-600 hover:underline"
+            >
               Registration here
             </Link>
           </p>

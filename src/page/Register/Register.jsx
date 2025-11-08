@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
 import { updateProfile } from 'firebase/auth';
@@ -7,6 +7,9 @@ import { updateProfile } from 'firebase/auth';
 const Register = () => {
   const { googleLogin, loginUser, setLoginUser, loginWithEmail } =
     use(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handelRegister = async (e) => {
     e.preventDefault();
@@ -24,10 +27,13 @@ const Register = () => {
         updateProfile(user, { displayName: name, photoURL: photoUrl })
           .then(() => {
             setLoginUser(user);
-            console.log(user);
             toast.success('User Successfully Register');
+            navigate(location.state || '/');
           })
-          .catch((error) => setLoginUser(user));
+          .catch((error) => {
+            setLoginUser(user);
+            navigate(location.state || '/');
+          });
       }
     } catch (error) {
       toast.error(error.message);
@@ -40,6 +46,7 @@ const Register = () => {
       const user = result.user;
       setLoginUser(user);
       toast.success('User Login Successful');
+      navigate(location.state || '/');
     } catch (error) {
       toast.error(error.message);
     }
