@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
@@ -22,6 +23,10 @@ const FirebaseContext = ({ children }) => {
 
   const googleLogin = async () => {
     return signInWithPopup(auth, googleProvider);
+  };
+
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const logout = () => {
@@ -47,6 +52,7 @@ const FirebaseContext = ({ children }) => {
     loginWithEmail,
     loader,
     logout,
+    login,
   };
   return <AuthContext value={value}>{children}</AuthContext>;
 };

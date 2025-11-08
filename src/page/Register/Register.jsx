@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
@@ -8,17 +8,38 @@ const Register = () => {
   const { googleLogin, loginUser, setLoginUser, loginWithEmail } =
     use(AuthContext);
 
+  const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const handelRegister = async (e) => {
     e.preventDefault();
+    setError('');
     const form = e.target;
     const name = form.name.value;
     const photoUrl = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoUrl, email, password);
+
+    const uppercase = /[A-Z]/;
+    const lowercase = /[a-z]/;
+
+    if (!uppercase.test(password)) {
+      setError('Password at least one uppercase letter.');
+      return;
+    }
+    if (!lowercase.test(password)) {
+      setError('Password at least one lowercase letter.');
+      return;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      return;
+    }
+    setLoading(true);
 
     try {
       const result = await loginWithEmail(email, password);
@@ -37,6 +58,8 @@ const Register = () => {
       }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -163,17 +186,20 @@ const Register = () => {
                     />
                   </div>
                 </div>
-                <p className="hidden text-xs text-red-600 mt-2">
-                  8+ characters required
-                </p>
               </div>
 
               <button
                 type="submit"
                 className="w-full py-3 px-4  text-sm font-medium rounded-lg border  border-green-600 bg-green-100 cursor-pointer"
               >
+                {loading && (
+                  <span className="loading loading-spinner text-primary"></span>
+                )}{' '}
                 Register
               </button>
+            </div>
+            <div className="mt-2">
+              {error && <p className="text-red-600">{error}</p>}
             </div>
           </form>
           {/* End Form */}

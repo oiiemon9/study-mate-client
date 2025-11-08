@@ -1,10 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-  const { googleLogin, loginUser, setLoginUser } = use(AuthContext);
+  const { googleLogin, loginUser, setLoginUser, login } = use(AuthContext);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,6 +18,24 @@ const Login = () => {
       navigate(location.state || '/');
     } catch (error) {
       toast.error(error.message);
+    }
+  };
+
+  const handelLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    try {
+      const result = await login(email, password);
+      const user = result.user;
+      setLoginUser(user);
+      toast.success('User Login Successful');
+      navigate(location.state || '/');
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -74,7 +93,7 @@ const Login = () => {
             Or
           </div>
 
-          <form>
+          <form onSubmit={handelLogin}>
             <div className="grid gap-y-4">
               <div>
                 <label htmlFor="email" className="block text-sm mb-2">
@@ -114,15 +133,15 @@ const Login = () => {
                     />
                   </div>
                 </div>
-                <p className=" text-xs text-red-600 mt-2">
-                  8+ characters required
-                </p>
               </div>
 
               <button
                 type="submit"
                 className="w-full py-3 px-4  text-sm font-medium rounded-lg border  border-green-600 bg-green-100 cursor-pointer"
               >
+                {loading && (
+                  <span className="loading loading-spinner text-primary"></span>
+                )}{' '}
                 Sign in
               </button>
             </div>
