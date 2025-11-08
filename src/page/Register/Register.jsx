@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Context/Firebase/FirebaseContext';
+import { toast } from 'react-toastify';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
+  const { googleLogin, loginUser, setLoginUser, loginWithEmail } =
+    use(AuthContext);
+
+  const handelRegister = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photoUrl = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photoUrl, email, password);
+
+    try {
+      const result = await loginWithEmail(email, password);
+      const user = result.user;
+      if (user) {
+        updateProfile(user, { displayName: name, photoURL: photoUrl })
+          .then(() => {
+            setLoginUser(user);
+            console.log(user);
+            toast.success('User Successfully Register');
+          })
+          .catch((error) => setLoginUser(user));
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const handelGoogleLogin = async () => {
+    try {
+      const result = await googleLogin();
+      const user = result.user;
+      setLoginUser(user);
+      toast.success('User Login Successful');
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   return (
-    <div className=" bg-white border border-gray-200 rounded-xl shadow-2xs max-w-xl mx-auto mt-10 px-2">
+    <div className=" bg-white border border-gray-200 rounded-xl shadow-2xs max-w-lg mx-auto my-10 px-2">
       <div className="p-4 sm:p-7">
         <div className="text-center">
           <h1 className="block text-2xl font-bold text-gray-800">Register</h1>
@@ -17,6 +59,7 @@ const Register = () => {
 
         <div className="mt-5">
           <button
+            onClick={handelGoogleLogin}
             type="button"
             className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
           >
@@ -51,7 +94,7 @@ const Register = () => {
             Or
           </div>
 
-          <form>
+          <form onSubmit={handelRegister}>
             <div className="grid gap-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm mb-2">

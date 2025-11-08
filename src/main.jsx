@@ -4,9 +4,14 @@ import './index.css';
 import App from './App.jsx';
 import { RouterProvider } from 'react-router';
 import { router } from './Router/Router.jsx';
+import FirebaseContext from './Context/Firebase/FirebaseContext.jsx';
+import { ToastContainer } from 'react-toastify';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <FirebaseContext>
+      <RouterProvider router={router}></RouterProvider>
+      <ToastContainer></ToastContainer>
+    </FirebaseContext>
   </StrictMode>
 );

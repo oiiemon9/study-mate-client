@@ -3,6 +3,10 @@ import Root from '../Layout/Root';
 import Home from '../page/Home/Home';
 import Login from '../page/login/Login';
 import Register from '../page/Register/Register';
+import FindPartners from '../page/FindPartners/FindPartners';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import CreatePartnerProfile from '../page/CreatePartnerProfile/CreatePartnerProfile';
+import MyConnections from '../page/MyConnections/MyConnections';
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +16,26 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: '/find-partners',
+        Component: FindPartners,
+      },
+      {
+        path: '/create-partner-profile',
+        element: (
+          <PrivateRoute>
+            <CreatePartnerProfile></CreatePartnerProfile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/my-connections',
+        element: (
+          <PrivateRoute>
+            <MyConnections></MyConnections>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'login',

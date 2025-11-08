@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 
 const Navbar = () => {
+  const { loginUser, loader } = use(AuthContext);
+
   const navlinks = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/">Find Partners</NavLink>
+        <NavLink to="/find-partners">Find Partners</NavLink>
       </li>
       <li>
-        <NavLink to="/">Create Partner Profile</NavLink>
+        <NavLink to="/create-partner-profile">Create Partner Profile</NavLink>
       </li>
       <li>
-        <NavLink to="/">My Connections</NavLink>
+        <NavLink to="/my-connections">My Connections</NavLink>
       </li>
     </>
   );
@@ -52,17 +55,54 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navlinks}</ul>
       </div>
       <div className="navbar-end">
-        <div className="flex gap-1">
-          <Link to="/login" className="btn bg-green-500 rounded-2xl text-white">
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="btn bg-green-500 rounded-2xl text-white"
-          >
-            Register
-          </Link>
-        </div>
+        {loginUser ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 h-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src={loginUser.photoURL}
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex="-1"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+
+              <li>
+                <Link className="bg-rose-600 text-white">Log out</Link>
+              </li>
+            </ul>
+          </div>
+        ) : loader ? (
+          ''
+        ) : (
+          <div className="flex gap-1">
+            <Link
+              to="/login"
+              className="btn bg-green-500 rounded-2xl text-white"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="btn bg-green-500 rounded-2xl text-white"
+            >
+              Register
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

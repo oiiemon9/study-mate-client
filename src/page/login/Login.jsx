@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Context/Firebase/FirebaseContext';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+  const { googleLogin, loginUser, setLoginUser } = use(AuthContext);
+
+  const handelGoogleLogin = async () => {
+    try {
+      const result = await googleLogin();
+      const user = result.user;
+      setLoginUser(user);
+      toast.success('User Login Successful');
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
-    <div className=" bg-white border border-gray-200 rounded-xl shadow-2xs max-w-xl mx-auto mt-10 px-2">
+    <div className=" bg-white border border-gray-200 rounded-xl shadow-2xs max-w-lg mx-auto my-10 px-2">
       <div className="p-4 sm:p-7">
         <div className="text-center">
           <h1 className="block text-2xl font-bold text-gray-800">Log in</h1>
@@ -17,6 +32,7 @@ const Login = () => {
 
         <div className="mt-5">
           <button
+            onClick={handelGoogleLogin}
             type="button"
             className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
           >
@@ -67,9 +83,7 @@ const Login = () => {
                   />
                 </div>
               </div>
-              {/* End Form Group */}
 
-              {/* Form Group */}
               <div>
                 <div className="flex flex-wrap justify-between items-center gap-2">
                   <label htmlFor="password" className="block text-sm mb-2">
@@ -106,7 +120,6 @@ const Login = () => {
               </button>
             </div>
           </form>
-          {/* End Form */}
         </div>
       </div>
     </div>
