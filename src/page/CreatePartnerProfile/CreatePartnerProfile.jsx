@@ -1,23 +1,62 @@
 import React, { use } from 'react';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
+import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
+import { toast } from 'react-toastify';
 
 const CreatePartnerProfile = () => {
   const { loginUser } = use(AuthContext);
+  const axiosInstance = useAxiosHook();
+
+  const handelCreatePartnerProfile = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const subject = form.subject.value;
+    const profileImage = form.profile_image.value;
+    const studyMode = form.radio_4.value;
+    const time = form.time.value;
+    const location = form.location.value;
+    const experience = form.level.value;
+    const bio = form.bio.value;
+
+    const profile = {
+      name: name,
+      profileImage: profileImage,
+      subject: subject,
+      studyMode: studyMode,
+      availabilityTime: time,
+      location: location,
+      experienceLevel: experience,
+      rating: 0,
+      partnerCount: 0,
+      email: email,
+      bio: bio,
+    };
+
+    try {
+      const result = await axiosInstance.post('/partnerProfiles', profile);
+      console.log(result);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className="max-w-[1440px] mx-auto px-2">
       <div className="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div className="bg-white rounded-xl shadow-xs p-4 sm:p-7 border border-gray-300">
           <div className="text-center mb-8">
             <h1 className="text-center text-2xl font-bold">
-              Create <span className="text-green-600">A Products</span>
+              Create <span className="text-green-600">A Partner Profile</span>
             </h1>
             <p className="text-sm text-gray-600">
               Build your profile and find your perfect study partner!
             </p>
           </div>
 
-          <form>
-            <div className="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 grid grid-cols-2 gap-5">
+          <form onSubmit={handelCreatePartnerProfile}>
+            <div className="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div>
                 <label className="inline-block text-sm font-medium">Name</label>
 
@@ -74,7 +113,7 @@ const CreatePartnerProfile = () => {
                     type="text"
                     className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
                     placeholder="https://..."
-                    name="profile-image"
+                    name="profile_image"
                     required
                   />
                 </div>
@@ -89,7 +128,7 @@ const CreatePartnerProfile = () => {
                     <label className="label">
                       <input
                         type="radio"
-                        name="radio-4"
+                        name="radio_4"
                         value="Online"
                         className="radio radio-primary"
                         defaultChecked
@@ -101,7 +140,7 @@ const CreatePartnerProfile = () => {
                     <label className="label">
                       <input
                         type="radio"
-                        name="radio-4"
+                        name="radio_4"
                         value="Offline"
                         className="radio radio-primary"
                       />
@@ -148,6 +187,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2">
                   <select
                     className={`py-1.5 sm:py-2 px-3 pe-9 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600 `}
+                    name="level"
                   >
                     <option className="text-black" value="Beginner">
                       Beginner
@@ -159,6 +199,19 @@ const CreatePartnerProfile = () => {
                       Expert
                     </option>
                   </select>
+                </div>
+              </div>
+              <div>
+                <label className="inline-block text-sm font-medium">Bio</label>
+
+                <div className="mt-2 space-y-3">
+                  <textarea
+                    type="text"
+                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600 min-h-60"
+                    placeholder="e.g I’m preparing for IELTS, prefer morning study."
+                    name="bio"
+                    required
+                  />
                 </div>
               </div>
             </div>
