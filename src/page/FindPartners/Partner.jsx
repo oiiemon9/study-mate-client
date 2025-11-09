@@ -1,9 +1,7 @@
 import { Rating } from '@smastrom/react-rating';
-import '@smastrom/react-rating/style.css';
-
 import React from 'react';
 
-const PartnerCard = ({ profile }) => {
+const Partner = ({ profile }) => {
   const { profileImage, name, subject, experienceLevel, rating } = profile;
   return (
     <div className="border rounded-2xl border-gray-200 flex flex-col justify-between">
@@ -47,4 +45,4 @@ const PartnerCard = ({ profile }) => {
   );
 };
 
-export default PartnerCard;
+export default Partner;
