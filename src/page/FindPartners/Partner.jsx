@@ -1,8 +1,9 @@
 import { Rating } from '@smastrom/react-rating';
 import React from 'react';
+import { Link } from 'react-router';
 
 const Partner = ({ profile }) => {
-  const { profileImage, name, subject, experienceLevel, rating } = profile;
+  const { profileImage, name, subject, experienceLevel, rating, _id } = profile;
   return (
     <div className="border rounded-2xl border-gray-200 flex flex-col justify-between">
       <div>
@@ -14,7 +15,7 @@ const Partner = ({ profile }) => {
           />
           <div className="absolute top-3 right-3 bg-white/50 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
             <div className="bg-green-600 h-2 w-2 rounded-full"></div>
-            <p className="text-xs text-green-800">Active</p>
+            <p className="text-xs text-green-600">Active</p>
           </div>
         </div>
 
@@ -36,10 +37,13 @@ const Partner = ({ profile }) => {
           </h3>
         </div>
       </div>
-      <div className="p-4">
-        <button className=" border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full">
+      <div className="p-4 flex">
+        <Link
+          to={`/partner/${_id}`}
+          className="border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full text-center"
+        >
           View Profile
-        </button>
+        </Link>
       </div>
     </div>
   );

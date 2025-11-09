@@ -1,0 +1,261 @@
+import {
+  BicepsFlexed,
+  BookOpenCheck,
+  Handshake,
+  MapPinCheck,
+  ShieldCheck,
+  Star,
+  Timer,
+  UserRound,
+} from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
+import { Link, useParams } from 'react-router';
+import DefaultLoader from '../../components/Loader/DefaultLoader';
+import { Rating } from '@smastrom/react-rating';
+
+import '@smastrom/react-rating/style.css';
+
+const PartnerInfo = () => {
+  const [partner, setPartner] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const axiosInstance = useAxiosHook();
+  const partnerId = useParams();
+  useEffect(() => {
+    setLoading(true);
+    const dataFetch = async () => {
+      try {
+        const res = await axiosInstance.get(`/partner/${partnerId.id}`);
+        setPartner(res.data);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    dataFetch();
+  }, []);
+
+  if (loading) {
+    return <DefaultLoader></DefaultLoader>;
+  }
+
+  return (
+    <div className="max-w-[1440px] mx-auto px-2 my-10">
+      <div className="grid grid-cols-3 auto-rows-auto gap-5">
+        <div className="col-span-3 lg:col-span-1 lg:row-span-2 order-2 lg:order-1 ">
+          <div className=" sticky top-18">
+            <div>
+              <h1 className="text-center text-2xl font-bold">
+                Partner <span className="text-green-600">Details</span>
+              </h1>
+            </div>
+            <div className="mt-5 flex flex-col justify-between items-center w-full ">
+              <div className="border border-gray-200 max-w-[350px] w-full p-4 rounded-2xl space-y-3">
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <UserRound size={20} />
+                    User :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm">
+                      {partner?.name}
+                    </h1>
+                  </div>
+                </div>
+                <div className="border-b border-gray-200"></div>
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <BookOpenCheck size={20} />
+                    Subject :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm">
+                      {partner?.subject}
+                    </h1>
+                  </div>
+                </div>
+                <div className="border-b border-gray-200"></div>
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <ShieldCheck size={20} />
+                    Study Mode :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm">
+                      <div className=" bg-white/50 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
+                        <div className="bg-green-600 h-2 w-2 rounded-full"></div>
+                        <p className="text-xs text-green-600">Active</p>
+                      </div>
+                    </h1>
+                  </div>
+                </div>
+                <div className="border-b border-gray-200"></div>
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <Timer size={20} />
+                    Availability :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm">
+                      {partner?.availabilityTime}
+                    </h1>
+                  </div>
+                </div>
+                <div className="border-b border-gray-200"></div>
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <MapPinCheck size={20} />
+                    Location :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm">
+                      {partner?.location}
+                    </h1>
+                  </div>
+                </div>
+                <div className="border-b border-gray-200"></div>
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <BicepsFlexed size={20} />
+                    Experience Level :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm">
+                      {partner?.experienceLevel}
+                    </h1>
+                  </div>
+                </div>
+                <div className="border-b border-gray-200"></div>
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <Star size={20} />
+                    Rating :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm flex items-center gap-1">
+                      {partner?.rating}{' '}
+                      <Rating
+                        readOnly
+                        style={{ maxWidth: 80 }}
+                        value={partner?.rating}
+                      ></Rating>
+                    </h1>
+                  </div>
+                </div>
+                <div className="border-b border-gray-200"></div>
+                <div className="text-gray-500/90 flex justify-between items-center">
+                  <div className="flex text-sm items-center gap-1">
+                    <Handshake size={20} />
+                    Partner Count :
+                  </div>
+                  <div>
+                    <h1 className="text-black font-semibold text-sm flex items-center gap-1">
+                      {partner?.partnerCount}
+                    </h1>
+                  </div>
+                </div>
+                <div className="pt-4 flex">
+                  <Link className="border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full text-center">
+                    Send Partner Request
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-span-3 lg:col-span-2 order-1 lg:order-2">
+          <div className="aspect-video">
+            <img
+              className="h-full w-full object-cover rounded-2xl"
+              src={partner?.profileImage}
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div className="col-span-3 lg:col-span-2 order-3">
+          <div className="mt-5">
+            <h2 className="text-xl font-extrabold text-gray-900 mb-6">
+              <span className="text-green-600 underline decoration-4 underline-offset-4">
+                Description
+              </span>
+            </h2>
+            <p className="mt-5 text-gray-500/90">{partner?.bio}</p>
+            <p className="mt-5 text-gray-500/90">
+              Here, every learner believes in growing together — not just by
+              reading books, but by exchanging ideas, helping one another, and
+              staying motivated as a team.
+              <br />
+              <br />
+              This platform is built for students and learners who want to find
+              their perfect study partner — someone who shares similar goals,
+              subjects, and motivation. Whether you’re preparing for exams,
+              learning a new skill, or exploring a new subject, you’ll find
+              someone here who understands your journey.
+              <br />
+              <br />
+              🤝 Connect. Collaborate. Grow. Together, we can make learning
+              easier, faster, and more enjoyable.
+              <br />
+              <br />
+              Because studying alone can be tough — but studying together builds
+              confidence, consistency, and success. 🌱 Let’s make education not
+              just a task, but a shared adventure towards success. 🚀
+            </p>
+          </div>
+          <div className="mt-5">
+            <h2 className="text-xl font-extrabold text-gray-900 mb-6">
+              <span className="text-green-600 underline decoration-4 underline-offset-4">
+                Review
+              </span>
+            </h2>
+            <p className="mt-5 text-gray-500/90">{partner?.bio}</p>
+            <p className="mt-5 text-gray-500/90">
+              Here, every learner believes in growing together — not just by
+              reading books, but by exchanging ideas, helping one another, and
+              staying motivated as a team.
+              <br />
+              <br />
+              This platform is built for students and learners who want to find
+              their perfect study partner — someone who shares similar goals,
+              subjects, and motivation. Whether you’re preparing for exams,
+              learning a new skill, or exploring a new subject, you’ll find
+              someone here who understands your journey.
+              <br />
+              <br />
+              🤝 Connect. Collaborate. Grow. Together, we can make learning
+              easier, faster, and more enjoyable.
+              <br />
+              <br />
+              Because studying alone can be tough — but studying together builds
+              confidence, consistency, and success. 🌱 Let’s make education not
+              just a task, but a shared adventure towards success. 🚀
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PartnerInfo;
+
+// {
+//     "_id": "69105e296bc33a31dbeac4b8",
+//     "name": "Tumpa dash ",
+//     "profileImage": "https://i.ibb.co.com/pv44zNQC/104422.jpg",
+//     "subject": "Mathmatic",
+//     "studyMode": "Online",
+//     "availabilityTime": "Evening 3- 5 pm",
+//     "location": "dhaka, gazipur",
+//     "experienceLevel": "Expert",
+//     "rating": 5,
+//     "partnerCount": 0,
+//     "email": "oiiemon9@gmail.com",
+//     "bio": "Math gets easier when we study together! I enjoy discussing concepts, solving tricky problems, and helping my study partner gain confidence step by step.",
+//     "create_at": "2025-11-09T09:26:01.636Z"
+// }
