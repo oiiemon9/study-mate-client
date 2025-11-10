@@ -6,6 +6,7 @@ import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import { TiDeleteOutline } from 'react-icons/ti';
+import Error from '../../components/Error/Error';
 
 const MyConnections = () => {
   const [myConnections, setMyConnections] = useState([]);
@@ -15,6 +16,7 @@ const MyConnections = () => {
   const modalRef = useRef();
   const [modalInfo, setModalInfo] = useState({});
   const [modalError, setModalError] = useState('');
+  const [error, setError] = useState();
 
   useEffect(() => {
     const connections = async () => {
@@ -25,7 +27,11 @@ const MyConnections = () => {
         );
         setMyConnections(res.data);
       } catch (error) {
-        toast.error(error.message);
+        if (error.status > 400) {
+          setError(error.status);
+        } else {
+          toast.error(error.message);
+        }
       } finally {
         setLoader(false);
       }
@@ -125,6 +131,10 @@ const MyConnections = () => {
       toast.error(error.message);
     }
   };
+
+  if (error) {
+    return <Error></Error>;
+  }
 
   return (
     <div className="max-w-[1440px] mx-auto px-2 my-10">
@@ -373,7 +383,7 @@ const MyConnections = () => {
                   type="submit"
                   className="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 focus:outline-hidden focus:bg-green-700 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
                 >
-                  Submit
+                  Update
                 </button>
               </div>
               {modalError && (

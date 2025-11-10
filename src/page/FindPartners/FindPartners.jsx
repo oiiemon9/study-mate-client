@@ -1,19 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Partner from './Partner';
 import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
+import Error from '../../components/Error/Error';
+import { toast } from 'react-toastify';
 
 const FindPartners = () => {
   const axiosInstance = useAxiosHook();
-  const [partners, setPartners] = useState([]);
+  const [partners, setPartners] = useState();
   const searchRef = useRef();
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoader(true);
     const dataLoad = async () => {
       try {
         const result = await axiosInstance.get('/all-partners');
         setPartners(result.data);
       } catch (error) {
-        console.log(error);
+        if (error.status === 404) {
+          setError(error.status);
+        } else {
+          toast.error(error.message);
+        }
+      } finally {
+        setLoader(false);
       }
     };
     dataLoad();
@@ -21,6 +32,7 @@ const FindPartners = () => {
 
   const handelSearch = async (e) => {
     e.preventDefault();
+    setLoader(true);
     const value = e.target.search.value;
     const sort = e.target.sort.value;
 
@@ -30,12 +42,19 @@ const FindPartners = () => {
       );
       setPartners(result.data);
     } catch (error) {
-      console.log(error);
+      if (error.status === 404) {
+        setError(error.status);
+      } else {
+        toast.error(error.message);
+      }
+    } finally {
+      setLoader(false);
     }
   };
   const handelSort = async (e) => {
     const sortValue = e.target.value;
     const searchValue = searchRef.current.value;
+    setLoader(true);
 
     try {
       const result = await axiosInstance.get(
@@ -43,9 +62,19 @@ const FindPartners = () => {
       );
       setPartners(result.data);
     } catch (error) {
-      console.log(error);
+      if (error.status === 404) {
+        setError(error.status);
+      } else {
+        toast.error(error.message);
+      }
+    } finally {
+      setLoader(false);
     }
   };
+
+  if (error) {
+    return <Error></Error>;
+  }
   return (
     <div className="max-w-[1440px] mx-auto px-2 my-10">
       <div className="text-center ">
@@ -83,11 +112,54 @@ const FindPartners = () => {
           <option value="Expert">Expert</option>
         </select>
       </form>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-14">
-        {partners.map((profile) => (
-          <Partner key={profile._id} profile={profile}></Partner>
-        ))}
-      </div>
+      {loader ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-14">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="border rounded-2xl border-gray-200 flex flex-col justify-between animate-pulse"
+            >
+              {/* Image part */}
+              <div className="m-4 aspect-[1/1] relative">
+                <div className="skeleton h-full w-full rounded-2xl"></div>
+                <div className="absolute top-3 right-3 bg-white/40 backdrop-blur-lg px-2 py-1 rounded-full">
+                  <div className="skeleton h-3 w-12 rounded-full"></div>
+                </div>
+              </div>
+
+              {/* Text content */}
+              <div className="p-4 border-t border-gray-200 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="skeleton h-3 w-24 rounded-full"></div>
+                  <div className="skeleton h-3 w-20 rounded-full"></div>
+                </div>
+
+                <div className="skeleton h-4 w-36 rounded-full"></div>
+
+                <div className="flex items-center justify-between">
+                  <div className="skeleton h-3 w-20 rounded-full"></div>
+                  <div className="skeleton h-3 w-16 rounded-full"></div>
+                </div>
+              </div>
+
+              {/* Button */}
+              <div className="p-4">
+                <div className="skeleton h-10 w-full rounded-xl"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : partners?.length === 0 ? (
+        <p className="text-center text-2xl font-bold text-gray-500/90 mt-10">
+          Partner Not Found
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-14">
+          {partners?.map((profile) => (
+            <Partner key={profile._id} profile={profile}></Partner>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

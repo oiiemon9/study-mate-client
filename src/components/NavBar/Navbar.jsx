@@ -65,7 +65,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {loginUser ? (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end z-50">
             <div
               tabIndex={0}
               role="button"
@@ -83,10 +83,10 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-2"
             >
               <li>
-                <a className="justify-between">
+                <Link to="/my-profile" className="justify-between">
                   Profile
                   <span className="badge">New</span>
-                </a>
+                </Link>
               </li>
 
               <li>

@@ -8,6 +8,8 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import CreatePartnerProfile from '../page/CreatePartnerProfile/CreatePartnerProfile';
 import MyConnections from '../page/MyConnections/MyConnections';
 import PartnerInfo from '../page/PartnerInfo/PartnerInfo';
+import Error from '../components/Error/Error';
+import Profile from '../page/Profile/Profile';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/find-partners',
+        errorElement: <Error></Error>,
         Component: FindPartners,
       },
       {
@@ -35,6 +38,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyConnections></MyConnections>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/my-profile',
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
           </PrivateRoute>
         ),
       },
@@ -55,5 +66,9 @@ export const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: '/*',
+    element: <Error></Error>,
   },
 ]);

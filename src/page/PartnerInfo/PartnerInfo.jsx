@@ -17,6 +17,7 @@ import { Rating } from '@smastrom/react-rating';
 
 import '@smastrom/react-rating/style.css';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
+import Error from '../../components/Error/Error';
 
 const PartnerInfo = () => {
   const [partner, setPartner] = useState(null);
@@ -25,6 +26,7 @@ const PartnerInfo = () => {
   const axiosInstance = useAxiosHook();
   const partnerId = useParams();
   const [partnerCount, setPartnerCount] = useState(0);
+  const [error, setError] = useState();
 
   useEffect(() => {
     setLoading(true);
@@ -34,7 +36,11 @@ const PartnerInfo = () => {
         setPartner(res.data);
         setPartnerCount(res.data.partnerCount);
       } catch (error) {
-        toast.error(error.message);
+        if (error.status > 400) {
+          setError(error.status);
+        } else {
+          toast.error(error.message);
+        }
       } finally {
         setLoading(false);
       }
@@ -74,6 +80,9 @@ const PartnerInfo = () => {
 
   if (loading) {
     return <DefaultLoader></DefaultLoader>;
+  }
+  if (error) {
+    return <Error></Error>;
   }
 
   return (
