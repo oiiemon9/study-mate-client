@@ -8,7 +8,7 @@ import {
   Timer,
   UserRound,
 } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
 import { Link, useParams } from 'react-router';
@@ -16,19 +16,23 @@ import DefaultLoader from '../../components/Loader/DefaultLoader';
 import { Rating } from '@smastrom/react-rating';
 
 import '@smastrom/react-rating/style.css';
+import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 
 const PartnerInfo = () => {
   const [partner, setPartner] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const { loginUser } = use(AuthContext);
   const axiosInstance = useAxiosHook();
   const partnerId = useParams();
+  const [partnerCount, setPartnerCount] = useState(0);
+
   useEffect(() => {
     setLoading(true);
     const dataFetch = async () => {
       try {
         const res = await axiosInstance.get(`/partner/${partnerId.id}`);
         setPartner(res.data);
+        setPartnerCount(res.data.partnerCount);
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -37,6 +41,36 @@ const PartnerInfo = () => {
     };
     dataFetch();
   }, []);
+
+  const handelPartnerRequest = async () => {
+    const userEmail = loginUser.email;
+    const partnerId = partner._id;
+    const partnerName = partner.name;
+    const partnerImage = partner.profileImage;
+    const subject = partner.subject;
+    const studyMode = partner.studyMode;
+    const myPartner = {
+      userEmail,
+      partnerId,
+      partnerName,
+      partnerImage,
+      subject,
+      studyMode,
+    };
+
+    try {
+      const res = await axiosInstance.post('/my-partner', myPartner);
+      if (res.data.insertedId) {
+        toast.success('Send Partner Request Successful 🎉');
+        setPartnerCount(partnerCount + 1);
+      }
+      if (res.data.message) {
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   if (loading) {
     return <DefaultLoader></DefaultLoader>;
@@ -153,12 +187,15 @@ const PartnerInfo = () => {
                   </div>
                   <div>
                     <h1 className="text-black font-semibold text-sm flex items-center gap-1">
-                      {partner?.partnerCount}
+                      {partnerCount}
                     </h1>
                   </div>
                 </div>
                 <div className="pt-4 flex">
-                  <Link className="border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full text-center">
+                  <Link
+                    onClick={handelPartnerRequest}
+                    className="border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full text-center"
+                  >
                     Send Partner Request
                   </Link>
                 </div>
