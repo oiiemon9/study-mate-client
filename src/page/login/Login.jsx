@@ -2,10 +2,13 @@ import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
+import { FaEyeSlash } from 'react-icons/fa';
+import { IoEyeSharp } from 'react-icons/io5';
 
 const Login = () => {
   const { googleLogin, loginUser, setLoginUser, login } = use(AuthContext);
   const [loading, setLoading] = useState(false);
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -60,7 +63,7 @@ const Login = () => {
           <button
             onClick={handelGoogleLogin}
             type="button"
-            className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+            className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
           >
             <svg
               className="w-4 h-auto"
@@ -122,15 +125,22 @@ const Login = () => {
                     Forgot password?
                   </button>
                 </div>
-                <div className="relative">
+                <div>
                   <div className="relative">
                     <input
-                      type="password"
+                      type={showPass ? 'text' : 'password'}
                       name="password"
                       className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm outline outline-gray-300 focus:outline-green-600"
                       placeholder="Password"
                       required
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPass(!showPass)}
+                      className="absolute top-0 bottom-0 right-5 cursor-pointer"
+                    >
+                      {showPass ? <FaEyeSlash /> : <IoEyeSharp />}
+                    </button>
                   </div>
                 </div>
               </div>

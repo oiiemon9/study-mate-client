@@ -27,6 +27,7 @@ const PartnerInfo = () => {
   const partnerId = useParams();
   const [partnerCount, setPartnerCount] = useState(0);
   const [error, setError] = useState();
+  const [buttonLoader, setButtonLoader] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -63,6 +64,7 @@ const PartnerInfo = () => {
       subject,
       studyMode,
     };
+    setButtonLoader(true);
 
     try {
       const res = await axiosInstance.post('/my-partner', myPartner);
@@ -75,6 +77,8 @@ const PartnerInfo = () => {
       }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setButtonLoader(false);
     }
   };
 
@@ -205,6 +209,9 @@ const PartnerInfo = () => {
                     onClick={handelPartnerRequest}
                     className="border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full text-center"
                   >
+                    {buttonLoader && (
+                      <span className="loading loading-spinner text-primary"></span>
+                    )}{' '}
                     Send Partner Request
                   </Link>
                 </div>

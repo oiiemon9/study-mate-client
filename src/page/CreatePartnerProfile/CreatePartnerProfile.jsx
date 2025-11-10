@@ -1,10 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
 import { toast } from 'react-toastify';
 
 const CreatePartnerProfile = () => {
   const { loginUser } = use(AuthContext);
+  const [loader, setLoader] = useState();
   const axiosInstance = useAxiosHook();
 
   const handelCreatePartnerProfile = async (e) => {
@@ -33,7 +34,7 @@ const CreatePartnerProfile = () => {
       email: email,
       bio: bio,
     };
-
+    setLoader(true);
     try {
       const result = await axiosInstance.post('/partnerProfiles', profile);
       if (result.data.insertedId) {
@@ -42,6 +43,8 @@ const CreatePartnerProfile = () => {
       }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -204,13 +207,13 @@ const CreatePartnerProfile = () => {
                   </select>
                 </div>
               </div>
-              <div>
+              <div className="lg:col-span-2">
                 <label className="inline-block text-sm font-medium">Bio</label>
 
                 <div className="mt-2 space-y-3">
                   <textarea
                     type="text"
-                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600 min-h-60"
+                    className=" py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600 min-h-60"
                     placeholder="e.g I’m preparing for IELTS, prefer morning study."
                     name="bio"
                     required
@@ -230,6 +233,9 @@ const CreatePartnerProfile = () => {
                 type="submit"
                 className="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
               >
+                {loader && (
+                  <span className="loading loading-spinner text-success"></span>
+                )}{' '}
                 Submit
               </button>
             </div>
