@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import TableRow from './TableRow';
+import { toast } from 'react-toastify';
+import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
+import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 
 const MyConnections = () => {
+  const [myConnections, setMyConnections] = useState([]);
+  const axiosInstance = useAxiosHook();
+  const { loginUser } = use(AuthContext);
+
+  useEffect(() => {
+    const connections = async () => {
+      try {
+        const res = await axiosInstance.get(
+          `/my-partner?email=${loginUser.email}`
+        );
+        setMyConnections(res.data);
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
+    connections();
+  }, []);
   return (
     <div className="max-w-[1440px] mx-auto px-2 my-10">
       <div className="text-center ">
@@ -22,7 +42,12 @@ const MyConnections = () => {
               </tr>
             </thead>
             <tbody>
-              <TableRow></TableRow>
+              {myConnections.map((connection) => (
+                <TableRow
+                  key={connection._id}
+                  connection={connection}
+                ></TableRow>
+              ))}
             </tbody>
           </table>
         </div>
