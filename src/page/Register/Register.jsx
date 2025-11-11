@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { updateProfile } from 'firebase/auth';
 import { FaEyeSlash } from 'react-icons/fa';
 import { IoEyeSharp } from 'react-icons/io5';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
   const { googleLogin, loginUser, setLoginUser, loginWithEmail } =
@@ -78,6 +79,17 @@ const Register = () => {
   };
   return (
     <div className=" bg-white dark:bg-base-200 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xs max-w-lg mx-auto  mb-24 mt-32 px-2">
+      <Helmet>
+        <title>Register | Study Mate</title>
+        <meta
+          name="description"
+          content="Find your perfect study partner and achieve your goals together!"
+        />
+        <meta
+          name="keywords"
+          content="study partner, learning, education, connect"
+        />
+      </Helmet>
       <div className="p-4 sm:p-7">
         <div className="text-center">
           <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">

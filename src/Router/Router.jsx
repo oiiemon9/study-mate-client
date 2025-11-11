@@ -27,6 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/create-partner-profile',
+        errorElement: <Error></Error>,
         element: (
           <PrivateRoute>
             <CreatePartnerProfile></CreatePartnerProfile>
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/my-connections',
+        errorElement: <Error></Error>,
         element: (
           <PrivateRoute>
             <MyConnections></MyConnections>
@@ -43,6 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/my-profile',
+        errorElement: <Error></Error>,
         element: (
           <PrivateRoute>
             <Profile></Profile>
@@ -51,6 +54,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/partner/:id',
+        errorElement: <Error></Error>,
         element: (
           <PrivateRoute>
             <PartnerInfo></PartnerInfo>
@@ -59,10 +63,12 @@ export const router = createBrowserRouter([
       },
       {
         path: 'login',
+        errorElement: <Error></Error>,
         Component: Login,
       },
       {
         path: 'register',
+        errorElement: <Error></Error>,
         Component: Register,
       },
     ],

@@ -19,6 +19,7 @@ import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import Error from '../../components/Error/Error';
 import Feedback from './Feedback';
 import WriteAReview from './WriteAReview';
+import { Helmet } from 'react-helmet-async';
 
 const PartnerInfo = () => {
   const [partner, setPartner] = useState(null);
@@ -101,6 +102,21 @@ const PartnerInfo = () => {
 
   return (
     <div className="max-w-[1440px] mx-auto px-2  mb-24 mt-32">
+      {partner && (
+        <Helmet>
+          <title>
+            {`${partner?.subject}`} | {`${partner?.name}`} | Study Mate
+          </title>
+          <meta
+            name="description"
+            content="Find your perfect study partner and achieve your goals together!"
+          />
+          <meta
+            name="keywords"
+            content="study partner, learning, education, connect"
+          />
+        </Helmet>
+      )}
       <div className="grid grid-cols-3 auto-rows-auto gap-5">
         <div className="col-span-3 lg:col-span-1 lg:row-span-2 order-2 lg:order-1 ">
           <div className=" sticky top-24">

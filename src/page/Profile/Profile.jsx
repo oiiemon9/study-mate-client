@@ -2,11 +2,23 @@ import React, { use } from 'react';
 import './profile.css';
 import { Link } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
+import { Helmet } from 'react-helmet-async';
 
 const Profile = () => {
   const { loginUser } = use(AuthContext);
   return (
     <div className="max-w-[1440px] mx-auto px-2  mb-24 mt-32">
+      <Helmet>
+        <title>{`${loginUser.displayName}`} | Study Mate</title>
+        <meta
+          name="description"
+          content="Find your perfect study partner and achieve your goals together!"
+        />
+        <meta
+          name="keywords"
+          content="study partner, learning, education, connect"
+        />
+      </Helmet>
       <div className="flex justify-center">
         <div className="border border-gray-200 dark:border-gray-700 max-w-lg w-full rounded-2xl overflow-hidden">
           <div className=" bg-[#0b1221] h-24 clip-curve"></div>

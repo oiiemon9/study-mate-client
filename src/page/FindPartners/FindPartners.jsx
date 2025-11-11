@@ -3,6 +3,7 @@ import Partner from './Partner';
 import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
 import Error from '../../components/Error/Error';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const FindPartners = () => {
   const axiosInstance = useAxiosHook();
@@ -77,6 +78,17 @@ const FindPartners = () => {
   }
   return (
     <div className="max-w-[1440px] mx-auto px-2 mb-24 mt-32 ">
+      <Helmet>
+        <title>Find Partners | Study Mate</title>
+        <meta
+          name="description"
+          content="Find your perfect study partner and achieve your goals together!"
+        />
+        <meta
+          name="keywords"
+          content="study partner, learning, education, connect"
+        />
+      </Helmet>
       <div className="text-center ">
         <h1 className="text-center text-2xl font-bold">
           Find Your Study <span className="text-green-600">Partner</span>
@@ -87,6 +99,14 @@ const FindPartners = () => {
         onSubmit={handelSearch}
         className="flex flex-col md:flex-row items-center justify-between gap-2 mt-24"
       >
+        <select onChange={handelSort} name="sort" className="select max-w-44">
+          <option value="">Default</option>
+          {/* Beginner / Intermediate / Expert */}
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Expert">Expert</option>
+        </select>
+
         <div className="flex items-center">
           <div className="space-y-3">
             <input
@@ -103,14 +123,6 @@ const FindPartners = () => {
             </button>
           </div>
         </div>
-
-        <select onChange={handelSort} name="sort" className="select max-w-44">
-          <option value="">Default</option>
-          {/* Beginner / Intermediate / Expert */}
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Expert">Expert</option>
-        </select>
       </form>
       {loader ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-14">
@@ -127,7 +139,6 @@ const FindPartners = () => {
                 </div>
               </div>
 
-              {/* Text content */}
               <div className="p-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="skeleton h-3 w-24 rounded-full"></div>
@@ -142,7 +153,6 @@ const FindPartners = () => {
                 </div>
               </div>
 
-              {/* Button */}
               <div className="p-4">
                 <div className="skeleton h-10 w-full rounded-xl"></div>
               </div>

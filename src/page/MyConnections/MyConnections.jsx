@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import { TiDeleteOutline } from 'react-icons/ti';
 import Error from '../../components/Error/Error';
+import { Helmet } from 'react-helmet-async';
 
 const MyConnections = () => {
   const [myConnections, setMyConnections] = useState([]);
@@ -138,6 +139,17 @@ const MyConnections = () => {
 
   return (
     <div className="max-w-[1440px] mx-auto px-2  mb-24 mt-32">
+      <Helmet>
+        <title>My Connections | Study Mate</title>
+        <meta
+          name="description"
+          content="Find your perfect study partner and achieve your goals together!"
+        />
+        <meta
+          name="keywords"
+          content="study partner, learning, education, connect"
+        />
+      </Helmet>
       <div className="text-center ">
         <h1 className="text-center text-2xl font-bold">
           My <span className="text-green-600">Connections</span>

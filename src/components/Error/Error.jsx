@@ -2,10 +2,22 @@ import React from 'react';
 import error404 from '../../assets/error404.png';
 import { Link } from 'react-router';
 import studyMate from '../../assets/studyMate.png';
+import { Helmet } from 'react-helmet-async';
 
 const Error = () => {
   return (
     <div className="max-w-[1440px] mx-auto px-2 mb-24 mt-32 ">
+      <Helmet>
+        <title>404 error | Study Mate</title>
+        <meta
+          name="description"
+          content="Find your perfect study partner and achieve your goals together!"
+        />
+        <meta
+          name="keywords"
+          content="study partner, learning, education, connect"
+        />
+      </Helmet>
       <div className="space-y-5">
         <div>
           <h1 className="text-center text-2xl font-bold text-cyan-500">Oops</h1>

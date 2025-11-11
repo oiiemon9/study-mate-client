@@ -7,13 +7,16 @@ import { router } from './Router/Router.jsx';
 import FirebaseContext from './Context/Firebase/FirebaseContext.jsx';
 import { ToastContainer } from 'react-toastify';
 import ThemeContext from './Context/Theme/ThemeContext.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <FirebaseContext>
       <ThemeContext>
-        <RouterProvider router={router}></RouterProvider>
-        <ToastContainer></ToastContainer>
+        <HelmetProvider>
+          <RouterProvider router={router}></RouterProvider>
+          <ToastContainer></ToastContainer>
+        </HelmetProvider>
       </ThemeContext>
     </FirebaseContext>
   </StrictMode>

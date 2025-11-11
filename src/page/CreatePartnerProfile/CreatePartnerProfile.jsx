@@ -2,6 +2,7 @@ import React, { use, useState } from 'react';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const CreatePartnerProfile = () => {
   const { loginUser } = use(AuthContext);
@@ -50,6 +51,17 @@ const CreatePartnerProfile = () => {
 
   return (
     <div className="max-w-[1440px] mx-auto px-2">
+      <Helmet>
+        <title>Create Partner Profile | Study Mate</title>
+        <meta
+          name="description"
+          content="Find your perfect study partner and achieve your goals together!"
+        />
+        <meta
+          name="keywords"
+          content="study partner, learning, education, connect"
+        />
+      </Helmet>
       <div className="max-w-4xl px-4  mb-24 mt-32 sm:px-6 lg:px-8  mx-auto">
         <div className="bg-white dark:bg-base-200 rounded-xl shadow-xs p-4 sm:p-7 border border-gray-300 dark:border-gray-700">
           <div className="text-center mb-8">
@@ -236,7 +248,7 @@ const CreatePartnerProfile = () => {
                 {loader && (
                   <span className="loading loading-spinner text-success"></span>
                 )}{' '}
-                Submit
+                Create Profile
               </button>
             </div>
           </form>
