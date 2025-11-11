@@ -97,7 +97,7 @@ const FindPartners = () => {
 
       <form
         onSubmit={handelSearch}
-        className="flex flex-col md:flex-row items-center justify-between gap-2 mt-24"
+        className="flex  flex-col-reverse md:flex-row items-center justify-between gap-2 mt-24"
       >
         <select onChange={handelSort} name="sort" className="select max-w-44">
           <option value="">Default</option>
