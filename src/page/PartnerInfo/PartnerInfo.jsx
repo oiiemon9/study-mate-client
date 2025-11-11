@@ -100,89 +100,89 @@ const PartnerInfo = () => {
               </h1>
             </div>
             <div className="mt-5 flex flex-col justify-between items-center w-full ">
-              <div className="border border-gray-200 max-w-[350px] w-full p-4 rounded-2xl space-y-3">
+              <div className="border border-gray-200 dark:border-gray-700 max-w-[350px] w-full p-4 rounded-2xl space-y-3">
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <UserRound size={20} />
                     User :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm">
+                    <h1 className="text-black dark:text-white font-semibold text-sm">
                       {partner?.name}
                     </h1>
                   </div>
                 </div>
-                <div className="border-b border-gray-200"></div>
+                <div className="border-b border-gray-200 dark:border-gray-700"></div>
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <BookOpenCheck size={20} />
                     Subject :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm">
+                    <h1 className="text-black  dark:text-white font-semibold text-sm">
                       {partner?.subject}
                     </h1>
                   </div>
                 </div>
-                <div className="border-b border-gray-200"></div>
+                <div className="border-b border-gray-200 dark:border-gray-700"></div>
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <ShieldCheck size={20} />
                     Study Mode :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm">
-                      <div className=" bg-white/50 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
+                    <h1 className="text-black dark:text-white font-semibold text-sm">
+                      <div className=" bg-white/50 dark:bg-base-300 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
                         <div className="bg-green-600 h-2 w-2 rounded-full"></div>
                         <p className="text-xs text-green-600">Active</p>
                       </div>
                     </h1>
                   </div>
                 </div>
-                <div className="border-b border-gray-200"></div>
+                <div className="border-b border-gray-200 dark:border-gray-700"></div>
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <Timer size={20} />
                     Availability :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm">
+                    <h1 className="text-black dark:text-white font-semibold text-sm">
                       {partner?.availabilityTime}
                     </h1>
                   </div>
                 </div>
-                <div className="border-b border-gray-200"></div>
+                <div className="border-b border-gray-200 dark:border-gray-700"></div>
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <MapPinCheck size={20} />
                     Location :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm">
+                    <h1 className="text-black dark:text-white font-semibold text-sm">
                       {partner?.location}
                     </h1>
                   </div>
                 </div>
-                <div className="border-b border-gray-200"></div>
+                <div className="border-b border-gray-200 dark:border-gray-700"></div>
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <BicepsFlexed size={20} />
                     Experience Level :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm">
+                    <h1 className="text-black dark:text-white font-semibold text-sm">
                       {partner?.experienceLevel}
                     </h1>
                   </div>
                 </div>
-                <div className="border-b border-gray-200"></div>
+                <div className="border-b border-gray-200 dark:border-gray-700"></div>
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <Star size={20} />
                     Rating :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm flex items-center gap-1">
+                    <h1 className="text-black dark:text-white font-semibold text-sm flex items-center gap-1">
                       {partner?.rating}{' '}
                       <Rating
                         readOnly
@@ -192,14 +192,14 @@ const PartnerInfo = () => {
                     </h1>
                   </div>
                 </div>
-                <div className="border-b border-gray-200"></div>
+                <div className="border-b border-gray-200 dark:border-gray-700"></div>
                 <div className="text-gray-500/90 flex justify-between items-center">
                   <div className="flex text-sm items-center gap-1">
                     <Handshake size={20} />
                     Partner Count :
                   </div>
                   <div>
-                    <h1 className="text-black font-semibold text-sm flex items-center gap-1">
+                    <h1 className="text-black dark:text-white font-semibold text-sm flex items-center gap-1">
                       {partnerCount}
                     </h1>
                   </div>

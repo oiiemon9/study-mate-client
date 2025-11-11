@@ -77,10 +77,12 @@ const Register = () => {
     }
   };
   return (
-    <div className=" bg-white border border-gray-200 rounded-xl shadow-2xs max-w-lg mx-auto  mb-24 mt-32 px-2">
+    <div className=" bg-white dark:bg-base-200 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xs max-w-lg mx-auto  mb-24 mt-32 px-2">
       <div className="p-4 sm:p-7">
         <div className="text-center">
-          <h1 className="block text-2xl font-bold text-gray-800">Register</h1>
+          <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
+            Register
+          </h1>
           <p className="mt-2 text-sm text-gray-600">
             Already have an account?{' '}
             <Link to="/login" className="text-green-600 hover:underline">
@@ -93,7 +95,7 @@ const Register = () => {
           <button
             onClick={handelGoogleLogin}
             type="button"
-            className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
+            className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-base-100 text-gray-800 dark:text-white shadow-2xs hover:bg-gray-50 dark:hover:bg-base-200 focus:outline-hidden  cursor-pointer"
           >
             <svg
               className="w-4 h-auto"
@@ -122,7 +124,7 @@ const Register = () => {
             Sign in with Google
           </button>
 
-          <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6">
+          <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 dark:after:border-gray-700 dark:before:border-gray-700 after:ms-6">
             Or
           </div>
 
@@ -136,7 +138,7 @@ const Register = () => {
                   <input
                     type="text"
                     name="name"
-                    className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm outline outline-gray-300 focus:outline-green-600"
+                    className="py-2.5 sm:py-3 px-4 block w-full rounded-lg sm:text-sm outline outline-gray-300 dark:outline-gray-700 focus:outline-green-600"
                     placeholder="Your name"
                     required
                   />
@@ -150,7 +152,7 @@ const Register = () => {
                   <input
                     type="text"
                     name="photo"
-                    className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm outline outline-gray-300 focus:outline-green-600"
+                    className="py-2.5 sm:py-3 px-4 block w-full  rounded-lg sm:text-sm outline outline-gray-300 dark:outline-gray-700 focus:outline-green-600"
                     placeholder="Your Photo URL"
                     required
                   />
@@ -164,7 +166,7 @@ const Register = () => {
                   <input
                     type="email"
                     name="email"
-                    className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm outline outline-gray-300 focus:outline-green-600"
+                    className="py-2.5 sm:py-3 px-4 block w-full rounded-lg sm:text-sm outline outline-gray-300 dark:outline-gray-700 focus:outline-green-600"
                     placeholder="Your Email"
                     required
                   />
@@ -182,7 +184,7 @@ const Register = () => {
                     <input
                       type={showPass ? 'text' : 'password'}
                       name="password"
-                      className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm outline outline-gray-300 focus:outline-green-600"
+                      className="py-2.5 sm:py-3 px-4 block w-full rounded-lg sm:text-sm outline outline-gray-300 dark:outline-gray-700 focus:outline-green-600"
                       placeholder="Password"
                       required
                     />
@@ -199,7 +201,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 px-4  text-sm font-medium rounded-lg border  border-green-600 bg-green-100 cursor-pointer"
+                className="w-full py-3 px-4  text-sm font-medium rounded-lg border  border-green-600 bg-green-100  dark:bg-base-200 cursor-pointer"
               >
                 {loading && (
                   <span className="loading loading-spinner text-primary"></span>
