@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { use } from 'react';
 import Marquee from 'react-fast-marquee';
 import { Link } from 'react-router';
+import { IsDarkContext } from '../../../Context/Theme/ThemeContext';
 
 const SuccessStories = () => {
+  const { theme, setTheme } = use(IsDarkContext);
   return (
-    <div className=" my-24 py-24 bg-gray-100/50">
+    <div className=" my-24 py-24 bg-gray-100/50 dark:bg-base-200">
       <div className="max-w-[1440px] mx-auto px-2">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
           <span className="text-green-600 underline decoration-4 underline-offset-4">
             Success
           </span>{' '}
@@ -15,11 +17,11 @@ const SuccessStories = () => {
         <div className="rounded-3xl overflow-hidden">
           <Marquee
             gradient
-            gradientColor="#f3f4f6"
+            gradientColor={theme === 'dark' ? '#1d232a' : '#f3f4f6'}
             gradientWidth={100}
             pauseOnHover
           >
-            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white w-[300px] h-[350px] mr-5">
+            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white dark:bg-base-100 dark:border-gray-700 w-[300px] h-[350px] mr-5 overflow-hidden">
               <div>
                 <p className="p-4 text-gray-500/90 italic">
                   "I’m very happy to be connected with this website. It has
@@ -29,7 +31,7 @@ const SuccessStories = () => {
                   achieve them."
                 </p>
               </div>
-              <div className="p-4 flex items-center border-t border-gray-200 bg-gray-100/50 w-full gap-2">
+              <div className="p-4 flex items-center border-t border-gray-200  dark:border-gray-700 bg-gray-100/50 dark:bg-base-200 w-full gap-2 ">
                 <div className="w-12 h-12">
                   <img
                     className="h-full w-full rounded-full object-cover"
@@ -42,7 +44,7 @@ const SuccessStories = () => {
                 </div>
               </div>
             </div>
-            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white w-[300px] h-[350px] mr-5">
+            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white dark:bg-base-100 dark:border-gray-700 w-[300px] h-[350px] mr-5 overflow-hidden">
               <div>
                 <p className="p-4 text-gray-500/90 italic">
                   " Before joining this platform, I used to study alone and
@@ -51,7 +53,7 @@ const SuccessStories = () => {
                   consistent and focused. "
                 </p>
               </div>
-              <div className="p-4 flex items-center border-t border-gray-200 bg-gray-100/50 w-full gap-2">
+              <div className="p-4 flex items-center border-t border-gray-200 dark:border-gray-700 bg-gray-100/50 dark:bg-base-200 w-full gap-2 overflow-hidden">
                 <div className="w-12 h-12">
                   <img
                     className="h-full w-full rounded-full object-cover"
@@ -66,7 +68,7 @@ const SuccessStories = () => {
                 </div>
               </div>
             </div>
-            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white w-[300px] h-[350px] mr-5">
+            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white dark:bg-base-100 dark:border-gray-700 w-[300px] h-[350px] mr-5 overflow-hidden">
               <div>
                 <p className="p-4 text-gray-500/90 italic">
                   " I met an amazing study partner here who shares the same
@@ -74,7 +76,7 @@ const SuccessStories = () => {
                   schedule together and pushed each other to stay on track. "
                 </p>
               </div>
-              <div className="p-4 flex items-center border-t border-gray-200 bg-gray-100/50 w-full gap-2">
+              <div className="p-4 flex items-center border-t border-gray-200 dark:border-gray-700 bg-gray-100/50 dark:bg-base-200 w-full gap-2">
                 <div className="w-12 h-12">
                   <img
                     className="h-full w-full rounded-full object-cover"
@@ -89,7 +91,7 @@ const SuccessStories = () => {
                 </div>
               </div>
             </div>
-            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white w-[300px] h-[350px] mr-5">
+            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white dark:bg-base-100 dark:border-gray-700 w-[300px] h-[350px] mr-5 overflow-hidden">
               <div>
                 <p className="p-4 text-gray-500/90 italic">
                   " This platform helped me find a group of students preparing
@@ -97,7 +99,7 @@ const SuccessStories = () => {
                   feels like a real study community. "
                 </p>
               </div>
-              <div className="p-4 flex items-center border-t border-gray-200 bg-gray-100/50 w-full gap-2">
+              <div className="p-4 flex items-center border-t border-gray-200 dark:border-gray-700 bg-gray-100/50 dark:bg-base-200 w-full gap-2">
                 <div className="w-12 h-12">
                   <img
                     className="h-full w-full rounded-full object-cover"
@@ -112,7 +114,7 @@ const SuccessStories = () => {
                 </div>
               </div>
             </div>
-            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white w-[300px] h-[350px] mr-5">
+            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white dark:bg-base-100 dark:border-gray-700 w-[300px] h-[350px] mr-5 overflow-hidden">
               <div>
                 <p className="p-4 text-gray-500/90 italic">
                   " I used to struggle with Math, but my study partner helped me
@@ -120,7 +122,7 @@ const SuccessStories = () => {
                   problems. This site changed my mindset! "
                 </p>
               </div>
-              <div className="p-4 flex items-center border-t border-gray-200 bg-gray-100/50 w-full gap-2">
+              <div className="p-4 flex items-center border-t border-gray-200 dark:border-gray-700 bg-gray-100/50 dark:bg-base-200 w-full gap-2">
                 <div className="w-12 h-12">
                   <img
                     className="h-full w-full rounded-full object-cover"
@@ -135,7 +137,7 @@ const SuccessStories = () => {
                 </div>
               </div>
             </div>
-            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white w-[300px] h-[350px] mr-5">
+            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white dark:bg-base-100 dark:border-gray-700 w-[300px] h-[350px] mr-5 overflow-hidden">
               <div>
                 <p className="p-4 text-gray-500/90 italic">
                   " I joined a study group for Physics here. Everyone was super
@@ -143,7 +145,7 @@ const SuccessStories = () => {
                   another before exams. "
                 </p>
               </div>
-              <div className="p-4 flex items-center border-t border-gray-200 bg-gray-100/50 w-full gap-2">
+              <div className="p-4 flex items-center border-t border-gray-200 dark:border-gray-700 bg-gray-100/50 dark:bg-base-200 w-full gap-2">
                 <div className="w-12 h-12">
                   <img
                     className="h-full w-full rounded-full object-cover"
@@ -158,7 +160,7 @@ const SuccessStories = () => {
                 </div>
               </div>
             </div>
-            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white w-[300px] h-[350px] mr-5">
+            <div className="border rounded-2xl border-gray-200 flex flex-col justify-between bg-white dark:bg-base-100 dark:border-gray-700 w-[300px] h-[350px] mr-5 overflow-hidden">
               <div>
                 <p className="p-4 text-gray-500/90 italic">
                   " My partner and I set weekly goals and track our progress
@@ -166,7 +168,7 @@ const SuccessStories = () => {
                   We even celebrated when we both passed our midterms! "
                 </p>
               </div>
-              <div className="p-4 flex items-center border-t border-gray-200 bg-gray-100/50 w-full gap-2">
+              <div className="p-4 flex items-center border-t border-gray-200 dark:border-gray-700 bg-gray-100/50 dark:bg-base-200 w-full gap-2">
                 <div className="w-12 h-12">
                   <img
                     className="h-full w-full rounded-full object-cover"

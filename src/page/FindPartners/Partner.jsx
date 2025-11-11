@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const Partner = ({ profile }) => {
   const { profileImage, name, subject, experienceLevel, rating, _id } = profile;
   return (
-    <div className="border rounded-2xl border-gray-200 flex flex-col justify-between">
+    <div className="border rounded-2xl border-gray-200 dark:border-gray-700 flex flex-col justify-between">
       <div>
         <div className="m-4 aspect-[1/1] relative">
           <img
@@ -19,7 +19,7 @@ const Partner = ({ profile }) => {
           </div>
         </div>
 
-        <div className="p-4 border-t border-gray-200 space-y-2">
+        <div className="p-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
           <div className=" flex flex-wrap items-center gap-1 justify-between">
             <div>
               <h4 className="text-sm text-gray-500/90 text-nowrap">{name}</h4>

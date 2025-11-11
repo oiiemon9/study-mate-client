@@ -1,11 +1,24 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
 import studyMate from '../../assets/studyMate.png';
+import { IsDarkContext } from '../../Context/Theme/ThemeContext';
 
 const Navbar = () => {
   const { loginUser, setLoginUser, loader, logout } = use(AuthContext);
+  // const [theme, setTheme] = useState(localStorage.getItem('theme'));
+  const { theme, setTheme } = use(IsDarkContext);
+
+  useEffect(() => {
+    const html = document.querySelector('html');
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const handelTheme = (checked) => {
+    setTheme(checked ? 'dark' : 'light');
+  };
 
   const handelLogout = () => {
     logout()
@@ -109,7 +122,56 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1 gap-1">{navlinks}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end space-x-2">
+            <label className="toggle text-base-content">
+              <input
+                type="checkbox"
+                value="synthwave"
+                className="theme-controller"
+                defaultChecked={theme === 'dark' ? true : false}
+                onChange={(e) => handelTheme(e.target.checked)}
+              />
+
+              <svg
+                aria-label="sun"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </g>
+              </svg>
+
+              <svg
+                aria-label="moon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </g>
+              </svg>
+            </label>
             {loginUser ? (
               <div className="dropdown dropdown-end z-50">
                 <div

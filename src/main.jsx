@@ -6,12 +6,15 @@ import { RouterProvider } from 'react-router';
 import { router } from './Router/Router.jsx';
 import FirebaseContext from './Context/Firebase/FirebaseContext.jsx';
 import { ToastContainer } from 'react-toastify';
+import ThemeContext from './Context/Theme/ThemeContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <FirebaseContext>
-      <RouterProvider router={router}></RouterProvider>
-      <ToastContainer></ToastContainer>
+      <ThemeContext>
+        <RouterProvider router={router}></RouterProvider>
+        <ToastContainer></ToastContainer>
+      </ThemeContext>
     </FirebaseContext>
   </StrictMode>
 );

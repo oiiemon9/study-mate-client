@@ -149,9 +149,9 @@ const MyConnections = () => {
           <div className="flex flex-col">
             <div className="overflow-x-auto">
               <div className="min-w-full inline-block align-middle">
-                <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                <div className="bg-white dark:bg-base-200 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm overflow-hidden">
+                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead className="bg-gray-50 dark:bg-base-300">
                       <tr>
                         <th className="ps-6 py-3 text-start">
                           <span className="text-xs font-semibold uppercase text-gray-400">
@@ -176,7 +176,7 @@ const MyConnections = () => {
                       </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-gray-200">
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                       {[...Array(4)].map((_, i) => (
                         <tr key={i}>
                           <td className="ps-6 py-4">
@@ -219,16 +219,16 @@ const MyConnections = () => {
           <div className="flex flex-col">
             <div className="overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
               <div className="min-w-full inline-block align-middle">
-                <div className="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                <div className="bg-white dark:bg-base-200 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xs overflow-hidden">
+                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead className="bg-gray-50 dark:bg-base-300">
                       <tr>
                         <th
                           scope="col"
                           className="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3 text-start"
                         >
                           <div className="flex items-center gap-x-2 ms-6">
-                            <span className="text-xs font-semibold uppercase text-gray-800">
+                            <span className="text-xs font-semibold uppercase text-gray-800 dark:text-white">
                               Name
                             </span>
                           </div>
@@ -236,7 +236,7 @@ const MyConnections = () => {
 
                         <th scope="col" className="px-6 py-3 text-start">
                           <div className="flex items-center gap-x-2">
-                            <span className="text-xs font-semibold uppercase text-gray-800">
+                            <span className="text-xs font-semibold uppercase text-gray-800 dark:text-white">
                               Subject
                             </span>
                           </div>
@@ -244,7 +244,7 @@ const MyConnections = () => {
 
                         <th scope="col" className="px-6 py-3 text-start">
                           <div className="flex items-center gap-x-2">
-                            <span className="text-xs font-semibold uppercase text-gray-800 text-nowrap">
+                            <span className="text-xs font-semibold uppercase text-gray-800 dark:text-white text-nowrap">
                               Study Mode
                             </span>
                           </div>
@@ -252,7 +252,7 @@ const MyConnections = () => {
 
                         <th scope="col" className="px-6 py-3 text-start">
                           <div className="flex items-center justify-end gap-x-2">
-                            <span className="text-xs font-semibold uppercase text-gray-800">
+                            <span className="text-xs font-semibold uppercase text-gray-800 dark:text-white">
                               Action
                             </span>
                           </div>
@@ -260,7 +260,7 @@ const MyConnections = () => {
                       </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-gray-200">
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                       {myConnections.map((connection) => (
                         <TableRow
                           key={connection._id}
@@ -280,7 +280,7 @@ const MyConnections = () => {
       {/* modal  */}
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle ">
         <div className="modal-box">
-          <div className="bg-white rounded-xl shadow-xs p-4 sm:p-5 border border-gray-300 relative">
+          <div className="bg-white dark:bg-base-200 rounded-xl shadow-xs p-4 sm:p-5 border border-gray-300 dark:border-gray-700 relative">
             <div className="text-center mb-2">
               <h1 className="text-center text-2xl font-bold">
                 Edit <span className="text-green-600">Partner</span>
@@ -288,7 +288,7 @@ const MyConnections = () => {
             </div>
 
             <form onSubmit={updatePartner}>
-              <div className=" first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 space-y-5">
+              <div className=" first:pt-0 last:pb-0 border-t first:border-transparent space-y-5">
                 <div>
                   <label className="inline-block text-sm font-medium">
                     Name
@@ -297,7 +297,7 @@ const MyConnections = () => {
                   <div className="mt-2 space-y-3">
                     <input
                       type="text"
-                      className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                      className="py-1.5 sm:py-2 px-3 pe-11 block w-full  shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                       placeholder="Your Name"
                       name="name"
                       required
@@ -313,7 +313,7 @@ const MyConnections = () => {
                   <div className="mt-2 space-y-3">
                     <input
                       type="text"
-                      className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                      className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                       placeholder="Subject"
                       name="subject"
                       required
@@ -330,7 +330,7 @@ const MyConnections = () => {
                   <div className="mt-2 space-y-3">
                     <input
                       type="text"
-                      className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                      className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                       placeholder="https://..."
                       name="profile_image"
                       required

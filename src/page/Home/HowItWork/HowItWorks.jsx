@@ -6,7 +6,7 @@ const HowItWorks = () => {
       <div className="grid md:grid-cols-5 gap-6 md:gap-10">
         <div className="md:col-span-2">
           <div className="max-w-xs">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
               <span className="text-green-600 underline decoration-4 underline-offset-4">
                 How
               </span>{' '}

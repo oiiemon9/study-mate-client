@@ -51,7 +51,7 @@ const CreatePartnerProfile = () => {
   return (
     <div className="max-w-[1440px] mx-auto px-2">
       <div className="max-w-4xl px-4  mb-24 mt-32 sm:px-6 lg:px-8  mx-auto">
-        <div className="bg-white rounded-xl shadow-xs p-4 sm:p-7 border border-gray-300">
+        <div className="bg-white dark:bg-base-200 rounded-xl shadow-xs p-4 sm:p-7 border border-gray-300 dark:border-gray-700">
           <div className="text-center mb-8">
             <h1 className="text-center text-2xl font-bold">
               Create <span className="text-green-600">A Partner Profile</span>
@@ -69,7 +69,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2 space-y-3">
                   <input
                     type="text"
-                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                     placeholder="Your Name"
                     name="name"
                     defaultValue={loginUser.displayName}
@@ -85,7 +85,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2 space-y-3">
                   <input
                     type="email"
-                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                     placeholder="Your Email"
                     name="email"
                     defaultValue={loginUser.email}
@@ -102,7 +102,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2 space-y-3">
                   <input
                     type="text"
-                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                     placeholder="e.g Mathematics"
                     name="subject"
                     required
@@ -117,7 +117,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2 space-y-3">
                   <input
                     type="text"
-                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full  shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                     placeholder="https://..."
                     name="profile_image"
                     required
@@ -163,7 +163,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2 space-y-3">
                   <input
                     type="text"
-                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full  shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                     placeholder="e.g Evening 6–9 PM"
                     name="time"
                     required
@@ -178,7 +178,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2 space-y-3">
                   <input
                     type="text"
-                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600"
+                    className="py-1.5 sm:py-2 px-3 pe-11 block w-full  shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600"
                     placeholder="dhaka, bangladesh"
                     name="location"
                     required
@@ -192,7 +192,7 @@ const CreatePartnerProfile = () => {
 
                 <div className="mt-2">
                   <select
-                    className={`py-1.5 sm:py-2 px-3 pe-9 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600 `}
+                    className={`py-1.5 sm:py-2 px-3 pe-9 block w-full  shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600 `}
                     name="level"
                   >
                     <option className="text-black" value="Beginner">
@@ -213,7 +213,7 @@ const CreatePartnerProfile = () => {
                 <div className="mt-2 space-y-3">
                   <textarea
                     type="text"
-                    className=" py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 focus:outline-2 focus:outline-blue-600 min-h-60"
+                    className=" py-1.5 sm:py-2 px-3 pe-11 block w-full  shadow-2xs sm:text-sm rounded-lg outline-1 outline-gray-300 dark:outline-gray-700 focus:outline-2 focus:outline-blue-600 min-h-60"
                     placeholder="e.g I’m preparing for IELTS, prefer morning study."
                     name="bio"
                     required
@@ -225,7 +225,7 @@ const CreatePartnerProfile = () => {
             <div className="mt-5 flex justify-end gap-x-2">
               <button
                 type="reset"
-                className="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                className="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
               >
                 Reset Form
               </button>

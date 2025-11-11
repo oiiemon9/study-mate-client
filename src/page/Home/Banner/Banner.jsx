@@ -11,7 +11,7 @@ const Banner = () => {
           src="https://i.ibb.co.com/fVpJtv8K/download-33.png"
           alt=""
         />
-        <div className="absolute top-0 right-5 md:right-32 p-3 md:p-6 bg-white rounded-b-3xl max-w-[200px] md:max-w-[400px]">
+        <div className="absolute top-0 right-5 md:right-32 p-3 md:p-6 bg-white dark:bg-base-100 rounded-b-3xl max-w-[200px] md:max-w-[400px]">
           <div className="custom-shape">
             <p className="text-xs md:text-base text-green-600 font-semibold">
               2500+ partner

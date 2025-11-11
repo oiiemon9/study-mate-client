@@ -19,6 +19,10 @@
   clip-path: path('M0,0 Q60,10 50,100 H100 V0 Z');
   transform: rotate(270deg);
 }
+[data-theme='dark'] .custom-shape::after,
+[data-theme='dark'] .custom-shape::before {
+  background-color: #1d232a;
+}
 
 @media (max-width: 768px) {
   .custom-shape::after {

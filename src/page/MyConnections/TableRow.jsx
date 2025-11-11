@@ -16,7 +16,7 @@ const TableRow = ({ connection, handelDelete, editModal }) => {
               </div>
             </div>
             <div className="grow">
-              <span className="block text-sm font-semibold text-gray-800">
+              <span className="block text-sm font-semibold text-gray-800 dark:text-white">
                 {partnerName}
               </span>
             </div>
@@ -25,14 +25,14 @@ const TableRow = ({ connection, handelDelete, editModal }) => {
       </td>
       <td className="h-px w-72 whitespace-nowrap">
         <div className="px-6 py-3">
-          <span className="block text-sm font-semibold text-gray-800">
+          <span className="block text-sm font-semibold text-gray-800 dark:text-white">
             {subject}
           </span>
         </div>
       </td>
       <td className="size-px whitespace-nowrap">
         <div className="px-6 py-3">
-          <div className=" bg-white/50 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
+          <div className=" bg-white/50 dark:bg-base-300 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full w-fit">
             <div className="bg-green-600 h-2 w-2 rounded-full"></div>
             <p className="text-xs text-green-600">{studyMode}</p>
           </div>

@@ -23,7 +23,7 @@ const TopStudyPartners = () => {
   }, []);
   return (
     <div className="max-w-[1440px] mx-auto px-2 my-24">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 dark:text-white">
         <span className="text-green-600 underline decoration-4 underline-offset-4">
           Top
         </span>{' '}
@@ -34,7 +34,7 @@ const TopStudyPartners = () => {
           {[...Array(4)].map((_, i) => (
             <div
               key={i}
-              className="border rounded-2xl border-gray-200 flex flex-col justify-between animate-pulse"
+              className="border rounded-2xl border-gray-200 dark:border-gray-700 flex flex-col justify-between animate-pulse"
             >
               {/* Image part */}
               <div className="m-4 aspect-[1/1] relative">
@@ -45,7 +45,7 @@ const TopStudyPartners = () => {
               </div>
 
               {/* Text content */}
-              <div className="p-4 border-t border-gray-200 space-y-3">
+              <div className="p-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="skeleton h-3 w-24 rounded-full"></div>
                   <div className="skeleton h-3 w-20 rounded-full"></div>
