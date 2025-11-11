@@ -137,7 +137,7 @@ const MyConnections = () => {
   }
 
   return (
-    <div className="max-w-[1440px] mx-auto px-2 my-10">
+    <div className="max-w-[1440px] mx-auto px-2  mb-24 mt-32">
       <div className="text-center ">
         <h1 className="text-center text-2xl font-bold">
           My <span className="text-green-600">Connections</span>

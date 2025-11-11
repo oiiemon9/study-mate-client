@@ -90,10 +90,10 @@ const PartnerInfo = () => {
   }
 
   return (
-    <div className="max-w-[1440px] mx-auto px-2 my-10">
+    <div className="max-w-[1440px] mx-auto px-2  mb-24 mt-32">
       <div className="grid grid-cols-3 auto-rows-auto gap-5">
         <div className="col-span-3 lg:col-span-1 lg:row-span-2 order-2 lg:order-1 ">
-          <div className=" sticky top-18">
+          <div className=" sticky top-24">
             <div>
               <h1 className="text-center text-2xl font-bold">
                 Partner <span className="text-green-600">Details</span>

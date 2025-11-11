@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 const Profile = () => {
   const { loginUser } = use(AuthContext);
   return (
-    <div className="max-w-[1440px] mx-auto px-2 my-10">
+    <div className="max-w-[1440px] mx-auto px-2  mb-24 mt-32">
       <div className="flex justify-center">
         <div className="border border-gray-200 max-w-lg w-full rounded-2xl overflow-hidden">
           <div className=" bg-[#0b1221] h-24 clip-curve"></div>

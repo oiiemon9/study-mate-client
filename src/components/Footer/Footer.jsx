@@ -98,7 +98,7 @@ const Footer = () => {
                     <Mail size={20} /> <span> studymate@web.com </span>
                   </li>
                   <li className="text-gray-500/90  w-fit flex items-center gap-2">
-                    <Phone size={20} /> <span>+880 18-365-5469</span>
+                    <Phone size={20} /> <span>+880 18-123-4567</span>
                   </li>
                 </ul>
               </div>

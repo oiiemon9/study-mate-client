@@ -17,19 +17,19 @@ const HerroSlider = () => {
         effect={'fade'}
         speed={1000}
         loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: false,
+        // }}
         pagination={{
           clickable: true,
         }}
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
-        className="mySwiper h-[300px] md:h-[360px] lg:h-[500px] xl:h-screen"
+        className="mySwiper h-[360px] md:h-[450px] lg:h-[500px] xl:h-screen"
       >
         <SwiperSlide className="bg-[url('https://i.ibb.co.com/5Ww60yJz/2149285424.jpg')] bg-cover bg-no-repeat h-full">
           <div className="h-full bg-[linear-gradient(90deg,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0)_51%)]">
-            <div className="max-w-[1440px] mx-auto px-6 flex flex-col h-full justify-center text-white ">
+            <div className="max-w-[1440px] mx-auto px-6 flex flex-col h-full justify-center text-white pt-20 ">
               <div className="lg:ms-20 space-y-3 md:space-y-6">
                 <p className="text-xs md:text-sm uppercase tracking-wider text-green-400 font-semibold">
                   Find Your Study Buddy
@@ -56,7 +56,7 @@ const HerroSlider = () => {
         </SwiperSlide>
         <SwiperSlide className="bg-[url('https://i.ibb.co.com/1JbXVrv8/2884.jpg')] bg-cover bg-no-repeat h-full">
           <div className="h-full bg-[linear-gradient(90deg,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0)_51%)]">
-            <div className="max-w-[1440px] mx-auto px-6 flex flex-col h-full justify-center text-white ">
+            <div className="max-w-[1440px] mx-auto px-6 flex flex-col h-full justify-center text-white pt-20 ">
               <div className="lg:ms-20 space-y-3 md:space-y-6">
                 <p className="text-xs md:text-sm uppercase tracking-wider text-green-400 font-semibold">
                   Find Your Study Buddy
@@ -83,7 +83,7 @@ const HerroSlider = () => {
         </SwiperSlide>
         <SwiperSlide className="bg-[url('https://i.ibb.co.com/CKR6ZTyS/pexels-artempodrez-4492126.jpg')] bg-cover bg-no-repeat h-full">
           <div className="h-full bg-[linear-gradient(90deg,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0)_51%)]">
-            <div className="max-w-[1440px] mx-auto px-6 flex flex-col h-full justify-center text-white ">
+            <div className="max-w-[1440px] mx-auto px-6 flex flex-col h-full justify-center text-white pt-20 ">
               <div className="lg:ms-20 space-y-3 md:space-y-6">
                 <p className="text-xs md:text-sm uppercase tracking-wider text-green-400 font-semibold">
                   Find Your Study Buddy

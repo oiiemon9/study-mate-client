@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" bg-white border border-gray-200 rounded-xl shadow-2xs max-w-lg mx-auto my-10 px-2">
+    <div className=" bg-white border border-gray-200 rounded-xl shadow-2xs max-w-lg mx-auto  mb-24 mt-32 px-2">
       <div className="p-4 sm:p-7">
         <div className="text-center">
           <h1 className="block text-2xl font-bold text-gray-800">Log in</h1>

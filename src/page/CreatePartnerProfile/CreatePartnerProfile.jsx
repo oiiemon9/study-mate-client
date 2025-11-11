@@ -50,7 +50,7 @@ const CreatePartnerProfile = () => {
 
   return (
     <div className="max-w-[1440px] mx-auto px-2">
-      <div className="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="max-w-4xl px-4  mb-24 mt-32 sm:px-6 lg:px-8  mx-auto">
         <div className="bg-white rounded-xl shadow-xs p-4 sm:p-7 border border-gray-300">
           <div className="text-center mb-8">
             <h1 className="text-center text-2xl font-bold">
