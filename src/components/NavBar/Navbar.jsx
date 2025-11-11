@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
+import studyMate from '../../assets/studyMate.png';
 
 const Navbar = () => {
   const { loginUser, setLoginUser, loader, logout } = use(AuthContext);
@@ -58,7 +59,14 @@ const Navbar = () => {
             {navlinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-10">
+            <img src={studyMate} alt="" />
+          </div>
+          <h1 className="text-xl font-bold  bg-gradient-to-r from-green-600 to-emerald-400 text-transparent bg-clip-text">
+            StudyMate
+          </h1>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navlinks}</ul>

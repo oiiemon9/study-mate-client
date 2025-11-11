@@ -27,7 +27,6 @@ const Banner = () => {
                 Find Partners
               </Link>
             </div>
-            {/* <button class=" border rounded-md">Shop Now</button> */}
           </div>
         </div>
       </div>
