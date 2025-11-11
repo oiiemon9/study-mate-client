@@ -14,10 +14,11 @@ import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
 import { Link, useParams } from 'react-router';
 import DefaultLoader from '../../components/Loader/DefaultLoader';
 import { Rating } from '@smastrom/react-rating';
-
 import '@smastrom/react-rating/style.css';
 import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import Error from '../../components/Error/Error';
+import Feedback from './Feedback';
+import WriteAReview from './WriteAReview';
 
 const PartnerInfo = () => {
   const [partner, setPartner] = useState(null);
@@ -28,6 +29,15 @@ const PartnerInfo = () => {
   const [partnerCount, setPartnerCount] = useState(0);
   const [error, setError] = useState();
   const [buttonLoader, setButtonLoader] = useState(false);
+  const [reviews, setReviews] = useState([
+    {
+      name: 'Topon Miya',
+      photo: 'https://i.ibb.co.com/YBbP677x/download-30.png',
+      rating: 4,
+      description:
+        'My partner and I set weekly goals and track our progress using this platform. It keeps us accountable and consistent. We even celebrated when we both passed our midterms!',
+    },
+  ]);
 
   useEffect(() => {
     setLoading(true);
@@ -260,35 +270,52 @@ const PartnerInfo = () => {
               just a task, but a shared adventure towards success. 🚀
             </p>
           </div>
-          <div className="mt-5">
+          <div className="mt-24">
+            <h2 className="text-xl font-extrabold text-gray-900 mb-6">
+              <span className="text-green-600 underline decoration-4 underline-offset-4">
+                Feedback
+              </span>
+            </h2>
+            <Feedback partnerRating={partner?.rating}></Feedback>
+          </div>
+          <div className="mt-24">
             <h2 className="text-xl font-extrabold text-gray-900 mb-6">
               <span className="text-green-600 underline decoration-4 underline-offset-4">
                 Review
               </span>
             </h2>
-            <p className="mt-5 text-gray-500/90">{partner?.bio}</p>
-            <p className="mt-5 text-gray-500/90">
-              Here, every learner believes in growing together — not just by
-              reading books, but by exchanging ideas, helping one another, and
-              staying motivated as a team.
-              <br />
-              <br />
-              This platform is built for students and learners who want to find
-              their perfect study partner — someone who shares similar goals,
-              subjects, and motivation. Whether you’re preparing for exams,
-              learning a new skill, or exploring a new subject, you’ll find
-              someone here who understands your journey.
-              <br />
-              <br />
-              🤝 Connect. Collaborate. Grow. Together, we can make learning
-              easier, faster, and more enjoyable.
-              <br />
-              <br />
-              Because studying alone can be tough — but studying together builds
-              confidence, consistency, and success. 🌱 Let’s make education not
-              just a task, but a shared adventure towards success. 🚀
-            </p>
           </div>
+          <div className="space-y-5">
+            {reviews.map((review, i) => (
+              <div
+                key={i}
+                className="border border-gray-200 dark:border-gray-700 bg-base-200 p-4 rounded-2xl"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="h-16 w-16 ">
+                    <img
+                      className="h-full w-full rounded-full object-cover"
+                      src={review.photo}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <h2 className="text-sm">{review.name}</h2>
+                    <Rating
+                      style={{ maxWidth: 80 }}
+                      value={review.rating}
+                      readOnly
+                    />
+                  </div>
+                </div>
+                <p className="mt-2 text-gray-500/90">{review.description}</p>
+              </div>
+            ))}
+          </div>
+          <WriteAReview
+            reviews={reviews}
+            setReviews={setReviews}
+          ></WriteAReview>
         </div>
       </div>
     </div>
