@@ -117,7 +117,7 @@ const Navbar = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
-                  <div className="w-10 h-10 rounded-full">
+                  <div className="min-w-10 min-h-10 rounded-full">
                     <img
                       alt="Tailwind CSS Navbar component"
                       src={loginUser.photoURL}
@@ -155,12 +155,7 @@ const Navbar = () => {
                 >
                   Login
                 </Link>
-                {/* <Link
-                  to="/find-partners"
-                  className=" px-4 py-2 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white rounded-xl font-semibold transition duration-300 cursor-pointer w-full md:w-fit text-xs md:text-base text-center"
-                >
-                  Find Partners
-                </Link> */}
+
                 <Link
                   to="/register"
                   className=" hidden md:flex px-4 py-2 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white font-semibold transition duration-300 cursor-pointer w-full md:w-fit text-xs md:text-base text-center rounded-full"

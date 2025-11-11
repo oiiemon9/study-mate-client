@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import './style/Slider.css';
 // import required modules
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { Link } from 'react-router';
 
 const HerroSlider = () => {
   return (
@@ -17,10 +18,10 @@ const HerroSlider = () => {
         effect={'fade'}
         speed={1000}
         loop={true}
-        // autoplay={{
-        //   delay: 3000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
@@ -45,10 +46,13 @@ const HerroSlider = () => {
                   together.
                 </p>
 
-                <div>
-                  <button className="mt-4 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white text-sm md:text-base px-3 py-1 md:px-6 md:py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer">
+                <div className="flex">
+                  <Link
+                    to="/find-partners"
+                    className="mt-4 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white text-sm md:text-base px-3 py-1 md:px-6 md:py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer"
+                  >
                     Find a Study Mate
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -72,10 +76,13 @@ const HerroSlider = () => {
                   and productive.
                 </p>
 
-                <div>
-                  <button className="mt-4 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white text-sm md:text-base px-3 py-1 md:px-6 md:py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer">
+                <div className="flex">
+                  <Link
+                    to="/create-partner-profile"
+                    className="mt-4 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white text-sm md:text-base px-3 py-1 md:px-6 md:py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer"
+                  >
                     Create Your Profile
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -99,10 +106,13 @@ const HerroSlider = () => {
                   goals.
                 </p>
 
-                <div>
-                  <button className="mt-4 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white text-sm md:text-base px-3 py-1 md:px-6 md:py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer">
+                <div className="flex">
+                  <Link
+                    to="/find-partners"
+                    className="mt-4 border border-green-600 hover:bg-green-600  text-green-600 hover:text-white text-sm md:text-base px-3 py-1 md:px-6 md:py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer"
+                  >
                     Find a Study Mate
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

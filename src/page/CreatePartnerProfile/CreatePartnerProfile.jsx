@@ -224,7 +224,7 @@ const CreatePartnerProfile = () => {
 
             <div className="mt-5 flex justify-end gap-x-2">
               <button
-                type="button"
+                type="reset"
                 className="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
               >
                 Reset Form
