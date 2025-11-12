@@ -336,7 +336,12 @@ const PartnerInfo = () => {
           ></WriteAReview>
         </div>
       </div>
-      <RelatedPartners></RelatedPartners>
+      {partner && (
+        <RelatedPartners
+          partnerSubject={partner?.subject}
+          partnerName={partner?.name}
+        ></RelatedPartners>
+      )}
     </div>
   );
 };
