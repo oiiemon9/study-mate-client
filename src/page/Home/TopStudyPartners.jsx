@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PartnerCard from './PartnerCard';
 import useAxiosHook from '../../Hook/axiosHook/useAxiosHook';
+import { motion } from 'framer-motion';
 
 const TopStudyPartners = () => {
   const axiosInstance = useAxiosHook();
@@ -23,12 +24,18 @@ const TopStudyPartners = () => {
   }, []);
   return (
     <div className="max-w-[1440px] mx-auto px-2 my-24">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 dark:text-white">
+      <motion.h2
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 dark:text-white"
+      >
         <span className="text-green-600 underline decoration-4 underline-offset-4">
           Top
         </span>{' '}
         Study Partners
-      </h2>
+      </motion.h2>
       {loader ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-14">
           {[...Array(4)].map((_, i) => (
@@ -67,11 +74,17 @@ const TopStudyPartners = () => {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-14">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-14"
+        >
           {topPartners.map((profile) => (
             <PartnerCard key={profile._id} profile={profile}></PartnerCard>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );

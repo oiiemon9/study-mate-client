@@ -4,6 +4,7 @@ import { AuthContext } from '../../Context/Firebase/FirebaseContext';
 import { toast } from 'react-toastify';
 import studyMate from '../../assets/studyMate.png';
 import { IsDarkContext } from '../../Context/Theme/ThemeContext';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const { loginUser, setLoginUser, loader, logout } = use(AuthContext);
@@ -193,7 +194,6 @@ const Navbar = () => {
                   <li>
                     <Link to="/my-profile" className="justify-between">
                       Profile
-                      <span className="badge">New</span>
                     </Link>
                   </li>
 

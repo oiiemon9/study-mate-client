@@ -1,6 +1,7 @@
 import React from 'react';
 import './banner.css';
 import { Link } from 'react-router';
+import { motion } from 'framer-motion';
 
 const Banner = () => {
   return (
@@ -13,9 +14,15 @@ const Banner = () => {
         />
         <div className="absolute top-0 right-5 md:right-32 p-3 md:p-6 bg-white dark:bg-base-100 rounded-b-3xl max-w-[200px] md:max-w-[400px]">
           <div className="custom-shape">
-            <p className="text-xs md:text-base text-green-600 font-semibold">
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-xs md:text-base text-green-600 font-semibold"
+            >
               2500+ partner
-            </p>
+            </motion.p>
             <h2 className="md:text-3xl font-bold">
               Find your perfect study partner .
             </h2>

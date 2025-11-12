@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const HowItWorks = () => {
   return (
@@ -6,15 +7,27 @@ const HowItWorks = () => {
       <div className="grid md:grid-cols-5 gap-6 md:gap-10">
         <div className="md:col-span-2">
           <div className="max-w-xs">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
+            <motion.h2
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6"
+            >
               <span className="text-green-600 underline decoration-4 underline-offset-4">
                 How
               </span>{' '}
               It Works — FAQ
-            </h2>
-            <p className="mt-1 hidden md:block text-gray-600">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="mt-1 hidden md:block text-gray-600"
+            >
               Answers to the most frequently asked questions.
-            </p>
+            </motion.p>
           </div>
         </div>
 

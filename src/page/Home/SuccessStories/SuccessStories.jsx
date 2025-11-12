@@ -2,18 +2,25 @@ import React, { use } from 'react';
 import Marquee from 'react-fast-marquee';
 import { Link } from 'react-router';
 import { IsDarkContext } from '../../../Context/Theme/ThemeContext';
+import { motion } from 'framer-motion';
 
 const SuccessStories = () => {
   const { theme, setTheme } = use(IsDarkContext);
   return (
     <div className=" my-24 py-24 bg-gray-100/50 dark:bg-base-200">
       <div className="max-w-[1440px] mx-auto px-2">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
+        <motion.h2
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6"
+        >
           <span className="text-green-600 underline decoration-4 underline-offset-4">
             Success
           </span>{' '}
           Stories
-        </h2>
+        </motion.h2>
         <div className="rounded-3xl overflow-hidden">
           <Marquee
             gradient

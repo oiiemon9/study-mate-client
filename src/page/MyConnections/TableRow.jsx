@@ -33,8 +33,18 @@ const TableRow = ({ connection, handelDelete, editModal }) => {
       <td className="size-px whitespace-nowrap">
         <div className="px-6 py-3">
           <div className=" bg-white/50 dark:bg-base-300 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full w-fit">
-            <div className="bg-green-600 h-2 w-2 rounded-full"></div>
-            <p className="text-xs text-green-600">{studyMode}</p>
+            <div
+              className={` ${
+                studyMode === 'Online' ? 'bg-green-600' : 'bg-gray-500/90'
+              } h-2 w-2 rounded-full`}
+            ></div>
+            <p
+              className={`text-xs   ${
+                studyMode === 'Online' ? 'text-green-600' : 'text-gray-500/90'
+              }`}
+            >
+              {studyMode === 'Online' ? 'Active' : 'Inactive'}
+            </p>
           </div>
         </div>
       </td>
