@@ -98,9 +98,31 @@ const RelatedPartners = ({ partnerSubject, partnerName }) => {
                           alt=""
                           className="h-full w-full object-cover object-top rounded-2xl"
                         />
-                        <div className="absolute top-3 right-3 bg-black backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
-                          <div className="bg-green-600 h-2 w-2 rounded-full"></div>
-                          <p className="text-xs text-green-600">Active</p>
+                        <div
+                          className={`absolute top-3 right-3 ${
+                            profile.studyMode === 'Online'
+                              ? 'bg-black'
+                              : 'bg-gray-200'
+                          } backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full`}
+                        >
+                          <div
+                            className={` ${
+                              profile.studyMode === 'Online'
+                                ? 'bg-green-600'
+                                : 'bg-gray-500/90'
+                            } h-2 w-2 rounded-full`}
+                          ></div>
+                          <p
+                            className={`text-xs   ${
+                              profile.studyMode === 'Online'
+                                ? 'text-green-600'
+                                : 'text-gray-500/90'
+                            }`}
+                          >
+                            {profile.studyMode === 'Online'
+                              ? 'Active'
+                              : 'Inactive'}
+                          </p>
                         </div>
                       </div>
 
