@@ -1,16 +1,39 @@
-# React + Vite
+# Study Mate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**StudyMate** is a website where students can get help based on their subjects. On this platform, students can find **study partners** and achieve their **goals and dreams** through group study. There are many students who struggle to find someone to share their problems with — this website is especially helpful for them, as well as for those who want to learn something new.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Firstly, the homepage contains a slider, top study partners, and three other sections. **This website uses Firebase Authentication, including Google login, email-password registration, and email-password login**. Some pages are set as **private routes** — users cannot access them without logging in.
 
-## React Compiler
+Then, there is a **Find Partners** section where all partners are shown by default. By clicking on View Profile, users can see each partner’s profile. On this page, a user can **search partners by subject and sort** them based on their experience. Both search and sort functionalities are handled from the backend.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The Partner **Details page** displays **all information** about a partner, including ratings. Users can leave **reviews there**, and there’s also a related partners section. If someone **sends a partner request**, the partner’s request count will increase by 1, and a success toast will appear.
 
-## Expanding the ESLint configuration
+Next, on the **Create Partner Profile page**, users can create their own profiles. Then, on the **My Connections page**, users can view the data of the partners they’ve sent requests to. Users can also **update their information or delete a partner** if they wish.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+A **dark mode** feature has been added to this website, allowing users to switch to dark mode if they prefer.
+
+Finally, on the **Profile page**, users can view their information, and by clicking the logout button, they can **log out**. If a user visits a page that doesn’t exist or an invalid path, they’ll be redirected to the **404 error page**.
+
+All the data is stored in **MongoDB**, and **CRUD operations** have been implemented on the backend.
+
+## Npm Packages
+
+### Frontend
+
+This website is built using **React**. For styling, **Tailwind CSS** has been used, along with **Vite** as the build tool. It also uses **React Router, DaisyUI, Axios, and Firebase**.
+
+For beautiful icons, **React Icons** and **Lucide React** have been used.
+For simple animations, **Framer Motion** has been implemented.
+Additionally, **React Marquee, React Helmet, React Toastify, SweetAlert2, and Swiper Slider** have also been used.
+
+### Backend
+
+The backend is built using **MongoDB, Express.js, Node.js** and **CORS**.
+
+Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://github.com/oiiemon9/study-mate-server</a>
+
+## Live Link
+
+<a href="https://study-mate-94d47.web.app/">https://study-mate-94d47.web.app/</a>

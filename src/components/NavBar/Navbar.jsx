@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const { loginUser, setLoginUser, loader, logout } = use(AuthContext);
-  // const [theme, setTheme] = useState(localStorage.getItem('theme'));
   const { theme, setTheme } = use(IsDarkContext);
 
   useEffect(() => {
