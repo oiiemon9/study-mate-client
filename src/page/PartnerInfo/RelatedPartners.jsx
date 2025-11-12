@@ -44,7 +44,7 @@ const RelatedPartners = ({ partnerSubject, partnerName }) => {
             <div className="absolute top-0 bottom-0 left-4 my-0 z-10  flex items-center">
               <button
                 ref={sliderPrevRef}
-                className="border border-green-600 bg-white hover:bg-green-600  text-green-600 hover:text-white   rounded-full font-semibold shadow-md transition duration-300 cursor-pointer h-10 w-10 flex justify-center items-center text-xl "
+                className=" bg-white/10 backdrop-blur-2xl hover:bg-green-600  text-green-600 hover:text-white   rounded-full font-semibold shadow-md transition duration-300 cursor-pointer h-10 w-10 flex justify-center items-center text-xl "
               >
                 <FaChevronLeft />
               </button>
@@ -52,7 +52,7 @@ const RelatedPartners = ({ partnerSubject, partnerName }) => {
             <div className="absolute top-0 bottom-0 right-4 my-0 z-10  flex items-center">
               <button
                 ref={sliderNextRef}
-                className="border border-green-600 bg-white hover:bg-green-600  text-green-600 hover:text-white   rounded-full font-semibold shadow-md transition duration-300 cursor-pointer h-10 w-10 flex justify-center items-center text-xl rotate-180"
+                className=" bg-white/10 backdrop-blur-2xl hover:bg-green-600  text-green-600 hover:text-white   rounded-full font-semibold shadow-md transition duration-300 cursor-pointer h-10 w-10 flex justify-center items-center text-xl rotate-180"
               >
                 <FaChevronLeft />
               </button>
@@ -98,7 +98,7 @@ const RelatedPartners = ({ partnerSubject, partnerName }) => {
                           alt=""
                           className="h-full w-full object-cover object-top rounded-2xl"
                         />
-                        <div className="absolute top-3 right-3 bg-white/50 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
+                        <div className="absolute top-3 right-3 bg-black backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
                           <div className="bg-green-600 h-2 w-2 rounded-full"></div>
                           <p className="text-xs text-green-600">Active</p>
                         </div>

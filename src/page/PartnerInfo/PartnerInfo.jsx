@@ -162,8 +162,24 @@ const PartnerInfo = () => {
                   <div>
                     <h1 className="text-black dark:text-white font-semibold text-sm">
                       <div className=" bg-white/50 dark:bg-base-300 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
-                        <div className="bg-green-600 h-2 w-2 rounded-full"></div>
-                        <p className="text-xs text-green-600">Active</p>
+                        <div
+                          className={` ${
+                            partner?.studyMode === 'Online'
+                              ? 'bg-green-600'
+                              : 'bg-gray-500/90'
+                          } h-2 w-2 rounded-full`}
+                        ></div>
+                        <p
+                          className={`text-xs   ${
+                            partner?.studyMode === 'Online'
+                              ? 'text-green-600'
+                              : 'text-gray-500/90'
+                          }`}
+                        >
+                          {partner?.studyMode === 'Online'
+                            ? 'Active'
+                            : 'Inactive'}
+                        </p>
                       </div>
                     </h1>
                   </div>

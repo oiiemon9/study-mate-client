@@ -5,7 +5,15 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const PartnerCard = ({ profile }) => {
-  const { profileImage, name, subject, experienceLevel, rating, _id } = profile;
+  const {
+    profileImage,
+    name,
+    subject,
+    experienceLevel,
+    rating,
+    studyMode,
+    _id,
+  } = profile;
   return (
     <div className="border rounded-2xl border-gray-200 dark:border-gray-700 flex flex-col justify-between">
       <div>
@@ -15,9 +23,23 @@ const PartnerCard = ({ profile }) => {
             alt=""
             className="h-full w-full object-cover object-top rounded-2xl"
           />
-          <div className="absolute top-3 right-3 bg-white/50 backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full">
-            <div className="bg-green-600 h-2 w-2 rounded-full"></div>
-            <p className="text-xs text-green-600">Active</p>
+          <div
+            className={`absolute top-3 right-3 ${
+              studyMode === 'Online' ? 'bg-black' : 'bg-gray-200'
+            } backdrop-blur-lg  flex items-center gap-1 px-1 rounded-full`}
+          >
+            <div
+              className={` ${
+                studyMode === 'Online' ? 'bg-green-600' : 'bg-gray-500/90'
+              } h-2 w-2 rounded-full`}
+            ></div>
+            <p
+              className={`text-xs   ${
+                studyMode === 'Online' ? 'text-green-600' : 'text-gray-500/90'
+              }`}
+            >
+              {studyMode === 'Online' ? 'Active' : 'Inactive'}
+            </p>
           </div>
         </div>
 
