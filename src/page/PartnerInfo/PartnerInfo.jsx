@@ -20,6 +20,7 @@ import Error from '../../components/Error/Error';
 import Feedback from './Feedback';
 import WriteAReview from './WriteAReview';
 import { Helmet } from 'react-helmet-async';
+import RelatedPartners from './RelatedPartners';
 
 const PartnerInfo = () => {
   const [partner, setPartner] = useState(null);
@@ -300,40 +301,42 @@ const PartnerInfo = () => {
                 Review
               </span>
             </h2>
-          </div>
-          <div className="space-y-5">
-            {reviews.map((review, i) => (
-              <div
-                key={i}
-                className="border border-gray-200 dark:border-gray-700 bg-base-200 p-4 rounded-2xl"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="h-16 w-16 ">
-                    <img
-                      className="h-full w-full rounded-full object-cover"
-                      src={review.photo}
-                      alt=""
-                    />
+            <div className="space-y-5">
+              {reviews.map((review, i) => (
+                <div
+                  key={i}
+                  className="border border-gray-200 dark:border-gray-700 bg-base-200 p-4 rounded-2xl"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="h-16 w-16 ">
+                      <img
+                        className="h-full w-full rounded-full object-cover"
+                        src={review.photo}
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <h2 className="text-sm">{review.name}</h2>
+                      <Rating
+                        style={{ maxWidth: 80 }}
+                        value={review.rating}
+                        readOnly
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="text-sm">{review.name}</h2>
-                    <Rating
-                      style={{ maxWidth: 80 }}
-                      value={review.rating}
-                      readOnly
-                    />
-                  </div>
+                  <p className="mt-2 text-gray-500/90">{review.description}</p>
                 </div>
-                <p className="mt-2 text-gray-500/90">{review.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
           <WriteAReview
             reviews={reviews}
             setReviews={setReviews}
           ></WriteAReview>
         </div>
       </div>
+      <RelatedPartners></RelatedPartners>
     </div>
   );
 };
