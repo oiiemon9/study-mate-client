@@ -12,13 +12,13 @@ const CreatePartnerProfile = () => {
   const handelCreatePartnerProfile = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const name = form.name.value.trim();
     const email = form.email.value;
-    const subject = form.subject.value;
+    const subject = form.subject.value.trim();
     const profileImage = form.profile_image.value;
     const studyMode = form.radio_4.value;
-    const time = form.time.value;
-    const location = form.location.value;
+    const time = form.time.value.trim();
+    const location = form.location.value.trim();
     const experience = form.level.value;
     const bio = form.bio.value;
 

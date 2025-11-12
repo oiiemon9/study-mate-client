@@ -133,7 +133,10 @@ const RelatedPartners = ({ partnerSubject, partnerName }) => {
                       </div>
                     </div>
                     <div className="p-4 flex">
-                      <Link className="border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full text-center">
+                      <Link
+                        to={`/partner/${profile._id}`}
+                        className="border border-green-600 hover:bg-green-600  text-green-600 hover:text-white  py-3 rounded-xl font-semibold shadow-md transition duration-300 cursor-pointer w-full text-center"
+                      >
                         View Profile
                       </Link>
                     </div>

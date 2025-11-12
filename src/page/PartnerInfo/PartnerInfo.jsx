@@ -31,7 +31,8 @@ const PartnerInfo = () => {
   const [partnerCount, setPartnerCount] = useState(0);
   const [error, setError] = useState();
   const [buttonLoader, setButtonLoader] = useState(false);
-  const [reviews, setReviews] = useState([
+  const [reviews, setReviews] = useState([]);
+  const defaultReviews = [
     {
       name: 'Topon Miya',
       photo: 'https://i.ibb.co.com/YBbP677x/download-30.png',
@@ -39,7 +40,7 @@ const PartnerInfo = () => {
       description:
         'My partner and I set weekly goals and track our progress using this platform. It keeps us accountable and consistent. We even celebrated when we both passed our midterms!',
     },
-  ]);
+  ];
 
   useEffect(() => {
     setLoading(true);
@@ -48,6 +49,7 @@ const PartnerInfo = () => {
         const res = await axiosInstance.get(`/partner/${partnerId.id}`);
         setPartner(res.data);
         setPartnerCount(res.data.partnerCount);
+        setReviews(defaultReviews);
       } catch (error) {
         if (error.status > 400) {
           setError(error.status);
@@ -59,7 +61,7 @@ const PartnerInfo = () => {
       }
     };
     dataFetch();
-  }, []);
+  }, [partnerId.id]);
 
   const handelPartnerRequest = async () => {
     const userEmail = loginUser.email;
