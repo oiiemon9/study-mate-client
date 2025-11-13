@@ -4,6 +4,7 @@ import '@smastrom/react-rating/style.css';
 import { Link } from 'react-router';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -87,13 +88,19 @@ const RelatedPartners = ({ partnerSubject, partnerName }) => {
             >
               {relatedPartners.map((profile, i) => (
                 <SwiperSlide>
-                  <div
+                  <motion.div
+                    whileHover="hover"
                     key={i}
                     className="border rounded-2xl border-gray-200 dark:border-gray-700 flex flex-col justify-between"
                   >
                     <div>
-                      <div className="m-4 aspect-[1/1] relative">
-                        <img
+                      <div className="m-4 aspect-[1/1] relative overflow-hidden rounded-2xl">
+                        <motion.img
+                          variants={{
+                            initial: { scale: 1, rotate: 0 },
+                            hover: { scale: 1.05, rotate: 1 },
+                          }}
+                          transition={{ duration: 0.3, ease: 'easeOut' }}
                           src={profile.profileImage}
                           alt=""
                           className="h-full w-full object-cover object-top rounded-2xl"
@@ -162,7 +169,7 @@ const RelatedPartners = ({ partnerSubject, partnerName }) => {
                         View Profile
                       </Link>
                     </div>
-                  </div>
+                  </motion.div>
                 </SwiperSlide>
               ))}
             </Swiper>
