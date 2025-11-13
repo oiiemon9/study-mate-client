@@ -39,7 +39,7 @@ const CreatePartnerProfile = () => {
     try {
       const result = await axiosInstance.post('/partnerProfiles', profile);
       if (result.data.insertedId) {
-        toast.success('Profile Upload Successful');
+        toast.success('Profile Create Successful');
         e.target.reset();
       }
     } catch (error) {
