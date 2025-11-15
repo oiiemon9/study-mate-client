@@ -195,6 +195,11 @@ const Navbar = () => {
                       Profile
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/created-profile" className="justify-between">
+                      Created Profile
+                    </Link>
+                  </li>
 
                   <li>
                     <button

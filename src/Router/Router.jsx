@@ -10,6 +10,7 @@ import MyConnections from '../page/MyConnections/MyConnections';
 import PartnerInfo from '../page/PartnerInfo/PartnerInfo';
 import Error from '../components/Error/Error';
 import Profile from '../page/Profile/Profile';
+import CreatedProfile from '../page/CreatedProfile/CreatedProfile';
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,15 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile></Profile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/created-profile',
+        errorElement: <Error></Error>,
+        element: (
+          <PrivateRoute>
+            <CreatedProfile></CreatedProfile>
           </PrivateRoute>
         ),
       },
