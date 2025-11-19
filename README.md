@@ -34,6 +34,40 @@ The backend is built using **MongoDB, Express.js, Node.js** and **CORS**.
 
 Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://github.com/oiiemon9/study-mate-server</a>
 
+### Dependencies
+
+"dependencies": {
+"@smastrom/react-rating": "^1.5.0",
+"@tailwindcss/vite": "^4.1.17",
+"axios": "^1.13.2",
+"daisyui": "^5.4.7",
+"firebase": "^12.5.0",
+"lucide-react": "^0.553.0",
+"motion": "^12.23.24",
+"react": "^19.1.1",
+"react-dom": "^19.1.1",
+"react-fast-marquee": "^1.6.5",
+"react-helmet-async": "^2.0.5",
+"react-icons": "^5.5.0",
+"react-router": "^7.9.5",
+"react-toastify": "^11.0.5",
+"sweetalert2": "^11.26.3",
+"swiper": "^12.0.3",
+"tailwindcss": "^4.1.17"
+},
+
+"devDependencies": {
+"@eslint/js": "^9.36.0",
+"@types/react": "^19.1.16",
+"@types/react-dom": "^19.1.9",
+"@vitejs/plugin-react": "^5.0.4",
+"eslint": "^9.36.0",
+"eslint-plugin-react-hooks": "^5.2.0",
+"eslint-plugin-react-refresh": "^0.4.22",
+"globals": "^16.4.0",
+"vite": "^7.1.7"
+}
+
 ## How to Use
 
 Clone the repo and install dependencies:
