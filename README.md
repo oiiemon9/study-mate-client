@@ -36,6 +36,7 @@ Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://g
 
 ### Dependencies
 
+```bash
 "dependencies": {
 "@smastrom/react-rating": "^1.5.0",
 "@tailwindcss/vite": "^4.1.17",
@@ -55,7 +56,9 @@ Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://g
 "swiper": "^12.0.3",
 "tailwindcss": "^4.1.17"
 },
+```
 
+```bash
 "devDependencies": {
 "@eslint/js": "^9.36.0",
 "@types/react": "^19.1.16",
@@ -67,6 +70,7 @@ Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://g
 "globals": "^16.4.0",
 "vite": "^7.1.7"
 }
+```
 
 ## How to Use
 
