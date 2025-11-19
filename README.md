@@ -36,11 +36,11 @@ Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://g
 
 ## How to Use
 
-Clone the repo and install dependencies:
+1. **Clone the repository**
 
-git clone https://github.com/touhidcodes/Resume-Craft
-cd resume-craft
-npm install
+```bash
+git clone https://github.com/oiiemon9/study-mate-client.git
+```
 
 ## Live Link
 
