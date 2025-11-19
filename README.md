@@ -40,6 +40,8 @@ Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://g
 
 ```bash
 git clone https://github.com/oiiemon9/study-mate-client.git
+cd study-mate-client
+npm install
 ```
 
 ## Live Link
