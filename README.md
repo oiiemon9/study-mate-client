@@ -34,6 +34,14 @@ The backend is built using **MongoDB, Express.js, Node.js** and **CORS**.
 
 Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://github.com/oiiemon9/study-mate-server</a>
 
+## How to Use
+
+Clone the repo and install dependencies:
+
+git clone https://github.com/touhidcodes/Resume-Craft
+cd resume-craft
+npm install
+
 ## Live Link
 
 <a href="https://study-mate-94d47.web.app/">https://study-mate-94d47.web.app/</a>
