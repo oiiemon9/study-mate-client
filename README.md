@@ -55,6 +55,12 @@ VITE_messagingSenderId=****************
 VITE_appId=****************
 ```
 
+Run the application:
+
+```bash
+npm run dev
+```
+
 ## Live Link
 
 <a href="https://study-mate-94d47.web.app/">https://study-mate-94d47.web.app/</a>
