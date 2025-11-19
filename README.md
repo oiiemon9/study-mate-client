@@ -36,12 +36,23 @@ Backend Link : <a href="https://github.com/oiiemon9/study-mate-server">https://g
 
 ## How to Use
 
-1. **Clone the repository**
+Clone the repo and install dependencies:
 
 ```bash
 git clone https://github.com/oiiemon9/study-mate-client.git
 cd study-mate-client
 npm install
+```
+
+Set up environment variables by creating a .env file in the root directory:
+
+```bash
+VITE_apiKey=****************
+VITE_authDomain=****************
+VITE_projectId=****************
+VITE_storageBucket=****************
+VITE_messagingSenderId=****************
+VITE_appId=****************
 ```
 
 ## Live Link
